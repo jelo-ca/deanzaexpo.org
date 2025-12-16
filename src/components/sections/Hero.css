@@ -1,0 +1,106 @@
+/* HERO SECTION */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1.5rem;
+    box-sizing: border-box;
+}
+
+.hero-inner {
+    max-width: 900px;
+    text-align: center;
+}
+
+.hero-kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    font-size: 0.8rem;
+    color: #38bdf8;
+    margin-bottom: 1rem;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    margin: 0 0 1rem;
+}
+
+.hero-title span {
+    background: linear-gradient(120deg, #38bdf8, #a855f7, #f97316);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    max-width: 32rem;
+    margin: 0 auto 2rem;
+    color: #cbd5f5;
+    line-height: 1.6;
+}
+
+.hero-subtitle span {
+    font-weight: 600;
+}
+
+.hero-cta-row {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+    flex-wrap: wrap;
+}
+
+.hero-cta {
+    border-radius: 999px;
+    padding: 0.75rem 1.6rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease,
+        background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.hero-cta.primary {
+    background: linear-gradient(135deg, #38bdf8, #6366f1);
+    color: #0b1120;
+    box-shadow: 0 18px 40px rgba(37, 99, 235, 0.5);
+}
+
+.hero-cta.primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 22px 50px rgba(37, 99, 235, 0.7);
+    cursor: pointer;
+}
+
+.hero-cta.secondary {
+    background: transparent;
+    color: #e5e7eb;
+    border-color: rgba(148, 163, 184, 0.7);
+}
+
+.hero-cta.secondary:hover {
+    background: rgba(15, 23, 42, 0.9);
+    cursor: pointer;
+}
+
+.hero-meta {
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+/* Optional: subtle glow behind text */
+.hero-inner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+}
+
+/* Make sure text is not blocked */
+.hero-inner {
+    position: relative;
+}

@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Hero from "./components/sections/Hero";
+import About from "./components/sections/About";
+import Speakers from "./components/sections/Speakers";
+import Sponsors from "./components/sections/Sponsors";
+import Team from "./components/sections/Team";
+import FAQ from "./components/sections/FAQ";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Hero />
+      <About />
+      <Speakers />
+      <Team />
+      <Sponsors />
+      <FAQ />
+      <footer>
+        <p>&copy; 2026 De Anza Tech & Academic Expo</p>
+      </footer>
+    </>
   );
 }
 

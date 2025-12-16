@@ -1,0 +1,10 @@
+#speakers {
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.speakers-copy {
+    margin-right: 150px;
+}
