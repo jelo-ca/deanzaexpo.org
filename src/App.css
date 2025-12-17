@@ -12,6 +12,35 @@ body {
   color: #e5e7eb;
 }
 
+.blob {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 999px;
+  filter: blur(150px);
+  opacity: 0.55;
+
+  /* smoother on many GPUs */
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.blob-1 {
+  top: 600px;
+  left: -150px;
+  background: #8B2233;
+  width: 420px;
+  height: 420px;
+}
+
+.blob-2 {
+  top: -40%;
+  right: -300px;
+  background: #FEC60D;
+  width: 600px;
+  height: 600px;
+}
+
 /* Layout wrapper is just the React root */
 #root {
   min-height: 100vh;

@@ -1,4 +1,5 @@
 import "./App.css";
+import "./Animation.css";
 import Hero from "./components/sections/Hero";
 import About from "./components/sections/About";
 import Speakers from "./components/sections/Speakers";
@@ -9,6 +10,8 @@ import FAQ from "./components/sections/FAQ";
 function App() {
   return (
     <>
+      <span class="blob blob-1"></span>
+      <span class="blob blob-2"></span>
       <Hero />
       <About />
       <Speakers />

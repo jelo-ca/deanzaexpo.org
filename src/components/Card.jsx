@@ -1,28 +1,22 @@
 import "./Card.css";
 
-function Card(props) {
+// person card component
+// Props: person (object with name, role, org, image)
+
+function Card({ person }) {
+  const { name, role, org, image } = person;
+
   return (
-    <div className="card">
-      <svg
-        xmlns={props.svg}
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <rect x="16" y="16" width="6" height="6" rx="1"></rect>
-        <rect x="2" y="16" width="6" height="6" rx="1"></rect>
-        <rect x="9" y="2" width="6" height="6" rx="1"></rect>
-        <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path>
-        <path d="M12 12V8"></path>
-      </svg>
-      <h2>{props.title}</h2>
-      <p>{props.description}</p>
-    </div>
+    <article className="person-card">
+      <div className="person-card-avatar-wrap">
+        <img className="person-card-avatar" src={image} alt={name} />
+      </div>
+      <div className="person-card-body">
+        <h3 className="person-card-name">{name}</h3>
+        <p className="person-card-role">{role}</p>
+        <p className="person-card-org">{org}</p>
+      </div>
+    </article>
   );
 }
 

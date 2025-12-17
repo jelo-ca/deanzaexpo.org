@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import "./SpeakerSphere.css";
-import "./SpeakerCard.css";
-import SpeakerCard from "./SpeakerCard";
+import "./Card.css";
+import Card from "./Card";
 
 // Sample data – replace with real speakers when you have them
 const speakers = [
@@ -360,7 +360,7 @@ function SpeakerSphere() {
               className="sphere-item-inner"
               style={{ transform: item.transform }}
             >
-              <SpeakerCard speaker={speakers[idx]} />
+              <Card person={speakers[idx]} />
             </div>
           </div>
         ))}

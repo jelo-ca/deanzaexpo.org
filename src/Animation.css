@@ -1,0 +1,40 @@
+.fadeUp {
+    animation: fadeUp both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 30%;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.autoBlur {
+    animation: autoBlur linear both;
+    animation-timeline: view();
+}
+
+@keyframes autoBlur {
+    0% {
+        filter: blur(40px);
+        scale: 80%;
+    }
+
+    45%,
+    55% {
+        filter: blur(0px);
+        scale: 100%;
+    }
+
+    100% {
+        filter: blur(40px);
+        scale: 80%;
+    }
+}
