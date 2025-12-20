@@ -1,13 +1,13 @@
 .fadeUp {
     animation: fadeUp both;
     animation-timeline: view();
-    animation-range: entry 20% cover 30%;
+    animation-range: entry 30% cover 50%;
 }
 
 @keyframes fadeUp {
     from {
         opacity: 0;
-        transform: translateY(20px) scale(0.8);
+        transform: translateY(40px) scale(0.8);
     }
 
     to {

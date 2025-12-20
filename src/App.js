@@ -1,11 +1,8 @@
 import "./App.css";
 import "./Animation.css";
-import Hero from "./components/sections/Hero";
-import About from "./components/sections/About";
-import Speakers from "./components/sections/Speakers";
-import Sponsors from "./components/sections/Sponsors";
-import Team from "./components/sections/Team";
-import FAQ from "./components/sections/FAQ";
+import Hero from "./sections/hero/Hero";
+import About from "./sections/about/About";
+import Speakers from "./sections/speakers/Speakers";
 
 function App() {
   return (
@@ -15,9 +12,9 @@ function App() {
       <Hero />
       <About />
       <Speakers />
-      <Team />
+      {/* <Team />
       <Sponsors />
-      <FAQ />
+      <FAQ /> */}
       <footer>
         <p>&copy; 2026 De Anza Tech & Academic Expo</p>
       </footer>

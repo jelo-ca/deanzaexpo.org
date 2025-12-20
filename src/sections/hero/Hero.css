@@ -1,0 +1,43 @@
+#hero-section {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    background: none;
+}
+
+.hero-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: -1;
+    filter: grayscale(100%);
+}
+
+.overlay {
+    position: absolute;
+    padding: 6rem 2rem;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(180deg,
+            rgba(0, 0, 0, 0.65),
+            rgba(0, 0, 0, 0.35));
+}
+
+.tagline {
+    width: 40%;
+    min-width: 640px;
+    font-size: 5rem;
+    text-align: left;
+    margin: 0 0 1rem 0;
+    font-weight: 600;
+}

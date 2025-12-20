@@ -1,0 +1,6 @@
+.btn-container {
+    width: 150px;
+    z-index: 1;
+    background-color: var(--red);
+    padding: 1rem;
+}
