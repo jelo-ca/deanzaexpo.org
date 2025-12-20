@@ -1,24 +1,28 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import "./Animation.css";
-import Hero from "./sections/hero/Hero";
-import About from "./sections/about/About";
-import Speakers from "./sections/speakers/Speakers";
+import Home from "./pages/Home";
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/AdminDashboard";
+import RequiredAuth from "./components/auth/RequiredAuth";
 
 function App() {
   return (
-    <>
-      <span class="blob blob-1"></span>
-      <span class="blob blob-2"></span>
-      <Hero />
-      <About />
-      <Speakers />
-      {/* <Team />
-      <Sponsors />
-      <FAQ /> */}
-      <footer>
-        <p>&copy; 2026 De Anza Tech & Academic Expo</p>
-      </footer>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route
+          path="/admin"
+          element={
+            <RequiredAuth>
+              <AdminDashboard />
+            </RequiredAuth>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
