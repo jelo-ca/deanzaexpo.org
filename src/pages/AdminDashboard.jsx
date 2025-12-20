@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { logout } from "../lib/auth";
+import { uploadToMediaBucket } from "../lib/upload";
+
 import {
   getProjects,
   createProject,
@@ -89,6 +91,18 @@ export default function AdminDashboard() {
       await refresh();
     } catch (e2) {
       setErr(e2.message);
+    } finally {
+      setBusy(false);
+    }
+  }
+  async function handleUpload(file, folder, setForm, field) {
+    setErr("");
+    setBusy(true);
+    try {
+      const { publicUrl } = await uploadToMediaBucket(file, folder);
+      setForm((f) => ({ ...f, [field]: publicUrl }));
+    } catch (e) {
+      setErr(e.message || String(e));
     } finally {
       setBusy(false);
     }
@@ -193,6 +207,24 @@ export default function AdminDashboard() {
                 </button>
               )}
             </div>
+            <input
+              type="file"
+              accept="image/*"
+              disabled={busy}
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (file)
+                  handleUpload(file, "projects", setProjectForm, "image_url");
+              }}
+            />
+
+            {projectForm.image_url && (
+              <img
+                src={projectForm.image_url}
+                alt="Project preview"
+                style={{ maxWidth: 280, borderRadius: 12 }}
+              />
+            )}
           </form>
 
           <h3>Existing Projects</h3>
@@ -227,7 +259,6 @@ export default function AdminDashboard() {
                           title: p.title ?? "",
                           description: p.description ?? "",
                           image_url: p.image_url ?? "",
-                          demo_url: p.demo_url ?? "",
                           repo_url: p.repo_url ?? "",
                         });
                       }}
