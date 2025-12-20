@@ -1,6 +1,10 @@
 import { createClient } from "@supabase/supabase-js";
 
-export const supabase = createClient(
-  import.meta.env.REACT_APP_SUPABASE_URL,
-  import.meta.env.REACT_APP_SUPABASE_ANON_KEY
-);
+const supabaseUrl = window.__ENV__?.SUPABASE_URL;
+const supabaseAnonKey = window.__ENV__?.SUPABASE_ANON_KEY;
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error("Missing Supabase env. Check public/env.js");
+}
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
