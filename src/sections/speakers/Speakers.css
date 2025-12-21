@@ -1,6 +1,12 @@
-.speaker-carousel{
+.speaker-carousel {
     display: flex;
     width: 100%;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.speaker-carousel:first-child {
+    position: absolute;
+    left: 30%;
 }

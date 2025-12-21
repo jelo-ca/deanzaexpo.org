@@ -14,9 +14,6 @@ export default function Home() {
       <Projects />
       <Sponsors />
       <FAQ />
-      {/* <Team />
-      <Sponsors />
-      <FAQ /> */}
       <footer>
         <p>&copy; 2026 De Anza Tech & Academic Expo</p>
       </footer>
