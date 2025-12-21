@@ -1,12 +1,24 @@
 import "./Card.css";
-export default function Card({ data }) {
+export default function Card({ data, type }) {
   console.log(data);
-
-  return (
-    <div className="card">
-      <img src="data.image_url" alt="" />
-      <h4>{data.name}test</h4>
-      <p>{data.role}</p>
-    </div>
-  )
+  if (type == "speaker")
+    return (
+      <div className="card">
+        <img src={data.headshot_url} alt="speaker_headshot" />
+        <div className="card-text">
+          <h4>{data.name}</h4>
+          <p>{data.role}</p>
+        </div>
+      </div>
+    );
+  if (type == "project")
+    return (
+      <div className="card">
+        <img src={data.image_url} alt="project_thumbnail" />
+        <div className="card-text">
+          <h4>{data.name}</h4>
+          <p>{data.description}</p>
+        </div>
+      </div>
+    );
 }

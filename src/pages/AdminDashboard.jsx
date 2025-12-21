@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { logout } from "../lib/auth";
 import { uploadToMediaBucket } from "../lib/upload";
+import "./AdminDashboard.css";
 
 import {
   getProjects,
@@ -19,7 +20,7 @@ import {
 const emptyProject = {
   title: "",
   description: "",
-  image_url: "",
+  photo_url: "",
   repo_url: "",
 };
 const emptySpeaker = {
@@ -175,14 +176,6 @@ export default function AdminDashboard() {
               required
             />
             <input
-              name="image_url"
-              value={projectForm.image_url}
-              onChange={(e) =>
-                setProjectForm((f) => ({ ...f, image_url: e.target.value }))
-              }
-              placeholder="Image URL"
-            />
-            <input
               name="repo_url"
               value={projectForm.repo_url}
               onChange={(e) =>
@@ -328,14 +321,6 @@ export default function AdminDashboard() {
               }
               placeholder="Bio"
             />
-            <input
-              name="headshot_url"
-              value={speakerForm.headshot_url}
-              onChange={(e) =>
-                setSpeakerForm((f) => ({ ...f, headshot_url: e.target.value }))
-              }
-              placeholder="Headshot URL"
-            />
 
             <div style={{ display: "flex", gap: 10 }}>
               <button type="submit" disabled={busy}>
@@ -353,6 +338,29 @@ export default function AdminDashboard() {
                 </button>
               )}
             </div>
+            <input
+              type="file"
+              accept="image/*"
+              disabled={busy}
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (file)
+                  handleUpload(
+                    file,
+                    "headshots",
+                    setSpeakerForm,
+                    "headshot_url"
+                  );
+              }}
+            />
+
+            {speakerForm.image_url && (
+              <img
+                src={speakerForm.image_url}
+                alt="Speaker preview"
+                style={{ maxWidth: 280, borderRadius: 12 }}
+              />
+            )}
           </form>
 
           <h3>Existing Speakers</h3>
