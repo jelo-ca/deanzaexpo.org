@@ -13,10 +13,18 @@ export default function Card({ data, type }) {
     );
   if (type == "project")
     return (
-      <div className="card">
+      <div
+        className="card"
+        style={{
+          flex: "0 0 50%",
+          width: "50%",
+          height: "auto",
+          border: "2px solid black",
+        }}
+      >
         <img src={data.image_url} alt="project_thumbnail" />
         <div className="card-text">
-          <h4>{data.name}</h4>
+          <h4>{data.title}</h4>
           <p>{data.description}</p>
         </div>
       </div>

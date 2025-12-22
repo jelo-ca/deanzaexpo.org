@@ -1,0 +1,11 @@
+#projects-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.project-container {
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+}

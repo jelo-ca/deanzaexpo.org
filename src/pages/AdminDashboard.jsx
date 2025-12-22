@@ -20,7 +20,7 @@ import {
 const emptyProject = {
   title: "",
   description: "",
-  photo_url: "",
+  image_url: "",
   repo_url: "",
 };
 const emptySpeaker = {
