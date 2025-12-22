@@ -110,7 +110,14 @@ export default function AdminDashboard() {
   }
 
   return (
-    <div style={{ maxWidth: 1000, margin: "2rem auto", padding: "0 1rem" }}>
+    <div
+      style={{
+        maxWidth: 1000,
+        margin: "2rem auto",
+        padding: "0 1rem",
+        color: "black",
+      }}
+    >
       <div
         style={{
           display: "flex",
