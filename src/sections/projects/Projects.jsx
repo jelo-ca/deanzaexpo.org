@@ -1,4 +1,5 @@
 import Card from "../../components/card/Card";
+import "./Projects.css";
 
 export default function Projects({ projectData }) {
   return (
