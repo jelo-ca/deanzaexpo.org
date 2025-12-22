@@ -3,7 +3,7 @@ import "./About.css";
 export default function About() {
   return (
     <section id="about-section">
-      <img class="about-image" src="./public/about-image.jpg" alt="About DAX" />
+      <img class="about-image" src="DAX_team.jpg" alt="About DAX" />
       <div class="about-text-container">
         <h2>Who we are</h2>
         <p>

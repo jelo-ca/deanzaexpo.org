@@ -1,0 +1,23 @@
+header {
+    z-index: 3;
+    position: absolute;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    background: black;
+    align-items: center;
+    padding: 1rem 1rem;
+}
+
+.header-logo {
+    width: 100px;
+    margin-right: 1rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    gap: 3rem;
+}
