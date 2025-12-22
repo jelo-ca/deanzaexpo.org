@@ -1,6 +1,7 @@
 :root {
   --red: #8B2233;
   --gold: #FEC60D;
+  overflow-x: hidden;
 }
 
 * {

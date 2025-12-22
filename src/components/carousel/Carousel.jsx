@@ -3,17 +3,25 @@ import React, { useState } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 // Based off of @ProgrammerCloud's carousel
-export default function Carousel({ children }) {
+export default function Carousel({
+  children,
+  auto = true,
+  intervalMs = 2500,
+  pauseOnHover = true,
+}) {
   const CARDS = 10;
   const MAX_VISIBILITY = 3;
 
   const [active, setActive] = useState(2);
   const count = React.Children.count(children);
 
+  const prev = () => setActive((i) => (i <= 0 ? count - 1 : i - 1));
+  const next = () => setActive((i) => (i >= count - 1 ? 0 : i + 1));
+
   return (
     <div className="carousel">
-      {active > 0 && (
-        <button className="nav left" onClick={() => setActive((i) => i - 1)}>
+      {count > 1 && (
+        <button className="nav left" onClick={prev}>
           <FiChevronLeft />
         </button>
       )}
@@ -27,14 +35,13 @@ export default function Carousel({ children }) {
             "--abs-offset": Math.abs(active - i) / 3,
             "pointer-events": active === i ? "auto" : "none",
             opacity: Math.abs(active - i) >= MAX_VISIBILITY ? "0" : "1",
-            display: Math.abs(active - i) > MAX_VISIBILITY ? "none" : "block",
           }}
         >
           {child}
         </div>
       ))}
-      {active > 0 && (
-        <button className="nav right" onClick={() => setActive((i) => i + 1)}>
+      {count > 1 && (
+        <button className="nav right" onClick={next}>
           <FiChevronRight />
         </button>
       )}
