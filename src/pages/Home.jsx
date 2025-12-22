@@ -9,6 +9,7 @@ import Speakers from "../sections/speakers/Speakers";
 import Projects from "../sections/projects/Projects";
 import Sponsors from "../sections/sponsors/Sponsors";
 import FAQ from "../sections/faq/FAQ";
+import Header from "../sections/header/Header.jsx";
 
 export default function Home() {
   const [speakers, setSpeakers] = useState([]);
@@ -34,6 +35,7 @@ export default function Home() {
 
   return (
     <>
+      <Header />
       <Hero />
       <About />
       <Speakers speakerData={speakers} />
