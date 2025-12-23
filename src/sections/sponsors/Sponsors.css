@@ -18,6 +18,10 @@
     gap: 3rem
 }
 
+.sponsor-cta-text {
+    margin-bottom: 1rem;
+}
+
 .sponsor-logo {
     max-width: 10%;
 

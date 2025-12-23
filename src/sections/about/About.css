@@ -8,8 +8,8 @@
     width: 50%;
     height: auto;
     object-fit: cover;
-    aspect-ratio: 1/1;
     border: black 1px solid;
+    padding: 10%;
     height: auto;
 }
 
