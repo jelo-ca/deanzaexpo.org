@@ -134,7 +134,7 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 
 ## 👥 Maintainers
 
-- [Your Name] - Project Lead
+- Anjoelo Calderon - Project Lead
 
 ## 📄 License
 
