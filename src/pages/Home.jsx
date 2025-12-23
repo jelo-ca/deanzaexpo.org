@@ -10,6 +10,7 @@ import Projects from "../sections/projects/Projects";
 import Sponsors from "../sections/sponsors/Sponsors";
 import FAQ from "../sections/faq/FAQ";
 import Header from "../sections/header/Header.jsx";
+import Footer from "../sections/footer/Footer.jsx";
 
 export default function Home() {
   const [speakers, setSpeakers] = useState([]);
@@ -42,9 +43,7 @@ export default function Home() {
       <Projects projectData={projects} />
       <Sponsors />
       <FAQ />
-      <footer>
-        <p>&copy; 2026 De Anza Tech & Academic Expo</p>
-      </footer>
+      <Footer />
     </>
   );
 }
