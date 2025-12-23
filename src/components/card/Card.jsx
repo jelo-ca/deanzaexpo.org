@@ -7,7 +7,7 @@ export default function Card({ data, type }) {
         <img src={data.headshot_url} alt="speaker_headshot" />
         <div className="card-text">
           <h4>{data.name}</h4>
-          <p className="role-text">{data.role}</p>
+          <p className="text">{data.role}</p>
           <p style={{ color: "var(--gold)" }}>{data.org}</p>
         </div>
       </div>
@@ -26,7 +26,7 @@ export default function Card({ data, type }) {
         <img src={data.image_url} alt="project_thumbnail" />
         <div className="card-text">
           <h4>{data.title}</h4>
-          <p>{data.description}</p>
+          <p className="text">{data.description}</p>
         </div>
       </div>
     );

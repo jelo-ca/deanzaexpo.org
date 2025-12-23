@@ -20,7 +20,8 @@ const FAQS = [
   },
 ];
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState(-1); // start closed
+
   return (
     <section id="faq-section">
       <h2>FAQ</h2>
@@ -36,6 +37,7 @@ export default function FAQ() {
                 overflow: "hidden",
                 background: "rgba(255,255,255,0.04)",
               }}
+              className="fadeUp"
             >
               <button
                 type="button"

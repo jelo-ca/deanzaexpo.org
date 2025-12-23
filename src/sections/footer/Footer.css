@@ -4,7 +4,7 @@ footer {
     min-height: 30vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 4rem;
 }
 
 footer img {
@@ -20,7 +20,7 @@ footer ul {
     display: flex;
     height: 100%;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 2rem;
 }
 
 footer nav a {
@@ -36,7 +36,7 @@ footer nav a {
 .info-container {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 1.5rem;
 }
 
 .address-container {

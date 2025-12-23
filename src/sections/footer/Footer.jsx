@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="info-container">
           <div className="info">
             <p>Email:</p>
-            <p>logistics@deanzaexpo.com</p>
+            <p>contact@deanzaexpo.org</p>
           </div>
 
           <div className="info">
