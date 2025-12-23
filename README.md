@@ -31,7 +31,7 @@ A modern React-based website for DAX, De Anza College's student-led innovation e
 1. **Clone the repository**
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/jelo-ca/deanzaexpo.org.git
    cd dax-website
    ```
 
