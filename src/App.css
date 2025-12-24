@@ -86,3 +86,25 @@ a {
 span {
   color: var(--gold);
 }
+
+#projects-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.project-container {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* TABLET AND BELOW (0–768) */
+@media (max-width: 768px) {
+  h2 {
+    padding-left: 1rem;
+  }
+}
+
+/* MOBILE ONLY (0–430) */
+@media (max-width: 430px) {}

@@ -1,9 +1,17 @@
-.card {
+.card.speaker {
     display: flex;
     flex-direction: column;
     width: 20%;
     min-height: 200px;
     background: rgba(255, 255, 255, 0.041);
+}
+
+.card.project {
+
+    flex: 0 0 50%;
+    width: 50%;
+    height: auto;
+    border: 2px solid black
 }
 
 .card img {
@@ -20,3 +28,13 @@
 .card-text {
     padding: .5rem;
 }
+
+/* TABLET AND BELOW (0–768) */
+@media (max-width: 768px) {
+    .card.speaker {
+        width: 40%;
+    }
+}
+
+/* MOBILE ONLY (0–430) */
+@media (max-width: 430px) {}

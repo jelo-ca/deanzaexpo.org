@@ -39,7 +39,9 @@ export default function Sponsors() {
       <div className="sponsor-cta">
         <p className="sponsor-cta-text">Interested in becoming a sponsor?</p>
         <p>Reach us at:</p>
-        <h4 style={{ color: "var(--gold)" }}>contact@deanzaexpo.org</h4>
+        <h4 className="contact-email" style={{ color: "var(--gold)" }}>
+          contact@deanzaexpo.org
+        </h4>
       </div>
     </section>
   );

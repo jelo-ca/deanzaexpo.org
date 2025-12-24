@@ -3,7 +3,7 @@ export default function Card({ data, type }) {
   console.log(data);
   if (type == "speaker")
     return (
-      <div className="card">
+      <div className="card speaker">
         <img src={data.headshot_url} alt="speaker_headshot" />
         <div className="card-text">
           <h4>{data.name}</h4>
@@ -14,15 +14,7 @@ export default function Card({ data, type }) {
     );
   if (type == "project")
     return (
-      <div
-        className="card"
-        style={{
-          flex: "0 0 50%",
-          width: "50%",
-          height: "auto",
-          border: "2px solid black",
-        }}
-      >
+      <div className="card project">
         <img src={data.image_url} alt="project_thumbnail" />
         <div className="card-text">
           <h4>{data.title}</h4>
