@@ -26,3 +26,13 @@
     max-width: 10%;
 
 }
+
+/* TABLET AND BELOW (0–768) */
+@media (max-width: 768px) {}
+
+/* MOBILE ONLY (0–430) */
+@media (max-width: 430px) {
+    .contact-email {
+        font-size: 1.5rem;
+    }
+}

@@ -9,3 +9,28 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+/* TABLET AND BELOW (0–768) */
+@media (max-width: 768px) {
+    #projects-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .project-container {
+        width: 100%;
+    }
+}
+
+/* MOBILE ONLY (0–430) */
+@media (max-width: 430px) {
+    .project-container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    .card.project {
+        width: 100%;
+    }
+}
