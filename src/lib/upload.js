@@ -6,26 +6,19 @@ function getExt(filename = "") {
   return parts.length > 1 ? parts.pop().toLowerCase() : "png";
 }
 
-export async function uploadToMediaBucket(file, folder) {
+export async function uploadToMediaBucket(file, folder, fileName) {
   if (!file) throw new Error("No file selected");
   if (!file.type.startsWith("image/"))
     throw new Error("Please select an image");
 
   const ext = getExt(file.name);
 
-  const id =
-    (typeof window !== "undefined" &&
-      window.crypto &&
-      typeof window.crypto.randomUUID === "function" &&
-      window.crypto.randomUUID()) ||
-    `${Date.now()}-${Math.random().toString(16).slice(2)}`;
-
-  const path = `${folder}/${id}.${ext}`;
+  const path = `${folder}/${fileName}.${ext}`;
 
   const { error: uploadError } = await supabase.storage
     .from("media")
     .upload(path, file, {
-      upsert: false,
+      upsert: true,
       contentType: file.type,
       cacheControl: "3600",
     });
