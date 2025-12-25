@@ -1,0 +1,24 @@
+#admin-section {
+    margin: 2rem;
+}
+
+.header {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.tab-btns {
+    display: flex;
+    gap: 1rem;
+}
+
+form {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2;
+}
+
+input,
+textarea {
+    color: black;
+}

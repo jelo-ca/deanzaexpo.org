@@ -96,11 +96,11 @@ export default function AdminDashboard() {
       setBusy(false);
     }
   }
-  async function handleUpload(file, folder, setForm, field) {
+  async function handleUpload(file, folder, setForm, field, fileName) {
     setErr("");
     setBusy(true);
     try {
-      const { publicUrl } = await uploadToMediaBucket(file, folder);
+      const { publicUrl } = await uploadToMediaBucket(file, folder, fileName);
       setForm((f) => ({ ...f, [field]: publicUrl }));
     } catch (e) {
       setErr(e.message || String(e));
@@ -110,22 +110,8 @@ export default function AdminDashboard() {
   }
 
   return (
-    <div
-      style={{
-        maxWidth: 1000,
-        margin: "2rem auto",
-        padding: "0 1rem",
-        color: "black",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          gap: 12,
-        }}
-      >
+    <div id="admin-section">
+      <div className="header">
         <h1>Admin Dashboard</h1>
         <button
           type="button"
@@ -140,7 +126,7 @@ export default function AdminDashboard() {
 
       {err && <p style={{ color: "tomato" }}>{err}</p>}
 
-      <div style={{ display: "flex", gap: 10, margin: "1rem 0" }}>
+      <div className="tab-btns">
         <button
           type="button"
           onClick={() => setTab("projects")}
@@ -160,10 +146,7 @@ export default function AdminDashboard() {
       {tab === "projects" && (
         <>
           <h2>{editingProjectId ? "Edit Project" : "Create Project"}</h2>
-          <form
-            onSubmit={submitProject}
-            style={{ display: "grid", gap: 10, marginBottom: 24 }}
-          >
+          <form onSubmit={submitProject}>
             <input
               name="title"
               value={projectForm.title}
@@ -214,7 +197,13 @@ export default function AdminDashboard() {
               onChange={(e) => {
                 const file = e.target.files?.[0];
                 if (file)
-                  handleUpload(file, "projects", setProjectForm, "image_url");
+                  handleUpload(
+                    file,
+                    "projects",
+                    setProjectForm,
+                    "image_url",
+                    `${projectForm.name}`
+                  );
               }}
             />
 
@@ -361,9 +350,9 @@ export default function AdminDashboard() {
               }}
             />
 
-            {speakerForm.image_url && (
+            {speakerForm.headshot_url && (
               <img
-                src={speakerForm.image_url}
+                src={speakerForm.headshot_url}
                 alt="Speaker preview"
                 style={{ maxWidth: 280, borderRadius: 12 }}
               />
