@@ -15,7 +15,7 @@ export default function Card({ data, type }) {
   if (type == "project")
     return (
       <div className="card project">
-        <img src={data.image_url} alt="project_thumbnail" />
+        {data.image_url && <img src={data.image_url} alt="project_thumbnail" />}
         <div className="card-text">
           <h4>{data.title}</h4>
           <p className="text">{data.description}</p>

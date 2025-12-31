@@ -208,11 +208,22 @@ export default function AdminDashboard() {
             />
 
             {projectForm.image_url && (
-              <img
-                src={projectForm.image_url}
-                alt="Project preview"
-                style={{ maxWidth: 280, borderRadius: 12 }}
-              />
+              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <img
+                  src={projectForm.image_url}
+                  alt="Project preview"
+                  style={{ maxWidth: 280, borderRadius: 12 }}
+                />
+                <button
+                  type="button"
+                  onClick={() =>
+                    setProjectForm((f) => ({ ...f, image_url: "" }))
+                  }
+                  style={{ height: "fit-content" }}
+                >
+                  Delete Image
+                </button>
+              </div>
             )}
           </form>
 
@@ -237,6 +248,33 @@ export default function AdminDashboard() {
                   <div>
                     <strong>{p.title}</strong>
                     <div style={{ opacity: 0.8 }}>{p.description}</div>
+                    {p.image_url && (
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 10,
+                          marginTop: 8,
+                        }}
+                      >
+                        <img
+                          src={p.image_url}
+                          alt="Project"
+                          style={{ maxWidth: 100, borderRadius: 6 }}
+                        />
+                        <button
+                          type="button"
+                          disabled={busy}
+                          onClick={() =>
+                            updateProject(p.id, { ...p, image_url: "" }).then(
+                              refresh
+                            )
+                          }
+                        >
+                          Delete Image
+                        </button>
+                      </div>
+                    )}
                   </div>
                   <div style={{ display: "flex", gap: 8 }}>
                     <button
@@ -351,11 +389,22 @@ export default function AdminDashboard() {
             />
 
             {speakerForm.headshot_url && (
-              <img
-                src={speakerForm.headshot_url}
-                alt="Speaker preview"
-                style={{ maxWidth: 280, borderRadius: 12 }}
-              />
+              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <img
+                  src={speakerForm.headshot_url}
+                  alt="Speaker preview"
+                  style={{ maxWidth: 280, borderRadius: 12 }}
+                />
+                <button
+                  type="button"
+                  onClick={() =>
+                    setSpeakerForm((f) => ({ ...f, headshot_url: "" }))
+                  }
+                  style={{ height: "fit-content" }}
+                >
+                  Delete Image
+                </button>
+              </div>
             )}
           </form>
 
@@ -382,6 +431,34 @@ export default function AdminDashboard() {
                     <div style={{ opacity: 0.8 }}>
                       {[s.role, s.org].filter(Boolean).join(" • ")}
                     </div>
+                    {s.headshot_url && (
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 10,
+                          marginTop: 8,
+                        }}
+                      >
+                        <img
+                          src={s.headshot_url}
+                          alt="Headshot"
+                          style={{ maxWidth: 100, borderRadius: 6 }}
+                        />
+                        <button
+                          type="button"
+                          disabled={busy}
+                          onClick={() =>
+                            updateSpeaker(s.id, {
+                              ...s,
+                              headshot_url: "",
+                            }).then(refresh)
+                          }
+                        >
+                          Delete Image
+                        </button>
+                      </div>
+                    )}
                   </div>
                   <div style={{ display: "flex", gap: 8 }}>
                     <button

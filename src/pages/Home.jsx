@@ -34,13 +34,15 @@ export default function Home() {
     refresh().catch((e) => setErr(e.message));
   }, []);
 
+  console.log(speakers, projects, err);
+
   return (
     <>
       <Header />
       <Hero />
       <About />
-      <Speakers speakerData={speakers} />
-      <Projects projectData={projects} />
+      {speakers.length > 3 && <Speakers speakerData={speakers} />}
+      {projects.length > 3 && <Projects projectData={projects} />}
       <Sponsors />
       <FAQ />
       <Footer />
