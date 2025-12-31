@@ -1,0 +1,11 @@
+#team-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.team-container {
+    width: 60%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}

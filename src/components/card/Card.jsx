@@ -4,7 +4,9 @@ export default function Card({ data, type }) {
   if (type == "speaker")
     return (
       <div className="card speaker">
-        <img src={data.headshot_url} alt="speaker_headshot" />
+        {data.headshot_url && (
+          <img src={data.headshot_url} alt="speaker_headshot" />
+        )}
         <div className="card-text">
           <h4>{data.name}</h4>
           <p className="text">{data.role}</p>
@@ -19,6 +21,20 @@ export default function Card({ data, type }) {
         <div className="card-text">
           <h4>{data.title}</h4>
           <p className="text">{data.description}</p>
+        </div>
+      </div>
+    );
+  if (type == "team")
+    return (
+      <div style={{ margin: "0 0 1rem 0" }} className="card team-member fadeUp">
+        {data.headshot_url && (
+          <img src={data.headshot_url} alt="team_headshot" />
+        )}
+        <div className="card-text">
+          <h4>{data.name}</h4>
+          <p className="text" style={{ color: "var(--gold)" }}>
+            {data.role}
+          </p>
         </div>
       </div>
     );
