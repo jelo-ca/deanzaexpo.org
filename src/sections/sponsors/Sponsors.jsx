@@ -23,7 +23,7 @@ export default function Sponsors() {
             className="sponsor-logo"
           />
         </div>
-        <h3>Silver Sponsors</h3>
+        {/* <h3>Silver Sponsors</h3>
         <div className="logo-container fadeUp">
           <img src="" alt="" className="sponsor-logo" />
           <img src="" alt="" className="sponsor-logo" />
@@ -34,7 +34,7 @@ export default function Sponsors() {
           <img src="" alt="" className="sponsor-logo" />
           <img src="" alt="" className="sponsor-logo" />
           <img src="" alt="" className="sponsor-logo" />
-        </div>
+        </div> */}
       </div>
       <div className="sponsor-cta">
         <p className="sponsor-cta-text">Interested in becoming a sponsor?</p>
