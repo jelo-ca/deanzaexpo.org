@@ -11,6 +11,7 @@ import Sponsors from "../sections/sponsors/Sponsors";
 import FAQ from "../sections/faq/FAQ";
 import Header from "../sections/header/Header.jsx";
 import Footer from "../sections/footer/Footer.jsx";
+import Team from "../sections/team/Team.jsx";
 
 export default function Home() {
   const [speakers, setSpeakers] = useState([]);
@@ -43,6 +44,7 @@ export default function Home() {
       <About />
       {speakers.length > 3 && <Speakers speakerData={speakers} />}
       {projects.length > 3 && <Projects projectData={projects} />}
+      <Team />
       <Sponsors />
       <FAQ />
       <Footer />
