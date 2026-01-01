@@ -20,6 +20,10 @@
     .project-container {
         width: 100%;
     }
+
+    .project h4 {
+        font-size: 1.5rem;
+    }
 }
 
 /* MOBILE ONLY (0–430) */

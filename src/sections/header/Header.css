@@ -25,13 +25,11 @@ nav {
 /* TABLET AND BELOW (0–768) */
 @media (max-width: 768px) {
     nav {
-        gap: 1rem;
+        display: none;
     }
 }
 
 /* MOBILE ONLY (0–430) */
 @media (max-width: 430px) {
-    nav {
-        display: none;
-    }
+    nav {}
 }
