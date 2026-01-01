@@ -9,3 +9,18 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
+
+/* TABLET AND BELOW (0–768) */
+@media (max-width: 768px) {
+    #team-section {
+        flex-direction: column;
+    }
+
+    .team-container {
+        width: 100%;
+        justify-content: space-around;
+    }
+}
+
+/* MOBILE ONLY (0–430) */
+@media (max-width: 430px) {}
