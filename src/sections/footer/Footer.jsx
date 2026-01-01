@@ -24,7 +24,7 @@ export default function Footer() {
 
           <div className="info">
             <p>Phone:</p>
-            <p>(408) 864-8692</p>
+            <p>(747) 305-4716</p>
           </div>
         </div>
 
