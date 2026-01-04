@@ -21,7 +21,7 @@ export default function Team(organizerData) {
         />
         <Card
           id={"member2"}
-          data={{ name: "Jasmine Tu", role: "Outreach Lead" }}
+          data={{ name: "Jasmine Tu", role: "Founder & Outreach Lead" }}
           type="team"
         />
         <Card
