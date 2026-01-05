@@ -14,7 +14,7 @@ export default function Footer() {
 
           <div className="info">
             <p>Instagram:</p>
-            <p>@DAX</p>
+            <p>@deanzaexpo</p>
           </div>
 
           <div className="info">
