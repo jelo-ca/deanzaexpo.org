@@ -4,19 +4,19 @@ import "./FAQ.css";
 const FAQS = [
   {
     q: "What is DAX?",
-    a: "DAX (De Anza Tech & Academic Expo) showcases student projects, demos, and talks across tech and academic disciplines.",
+    a: "",
   },
   {
     q: "Who can attend?",
-    a: "Everyone is welcome—students, faculty, alumni, and community members.",
+    a: "",
   },
   {
     q: "How do I register?",
-    a: "Use the Register button on the homepage. If registration is closed, you can still attend as a walk-in if capacity allows.",
+    a: "",
   },
   {
     q: "Can I present a project?",
-    a: "Yes. Submit your project through the interest form. A coordinator will follow up with details and deadlines.",
+    a: "",
   },
 ];
 export default function FAQ() {
