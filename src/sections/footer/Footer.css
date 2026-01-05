@@ -1,5 +1,6 @@
 footer {
     background: black;
+    padding-top: 1rem;
     width: 100%;
     min-height: 30vh;
     display: flex;
@@ -31,6 +32,7 @@ footer nav a {
     display: flex;
     justify-content: space-around;
     margin: 0 10%;
+    padding-top: 2rem;
 }
 
 .info-container {
