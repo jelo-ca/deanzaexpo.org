@@ -1,9 +1,11 @@
+import Logo from "../../components/logo/Logo";
 import "./About.css";
 
 export default function About() {
   return (
     <section id="about-section">
-      <img class="about-image" src="DAX_logo.png" alt="About DAX" />
+      {/* <img class="about-image" src="DAX_logo.png" alt="About DAX" /> */}
+      <Logo className="about-logo" width={300} height={240} />
       <div class="about-text-container">
         <h2>Who we are</h2>
         <p>
