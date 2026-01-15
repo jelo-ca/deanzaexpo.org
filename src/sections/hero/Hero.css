@@ -22,7 +22,7 @@
 
 .overlay {
     position: absolute;
-    padding: 6rem 2rem;
+    padding: 6rem 4rem;
     top: 0;
     left: 0;
     height: 100%;
@@ -41,6 +41,7 @@
     font-size: 5rem;
     text-align: left;
     font-weight: 600;
+    padding:  3rem 0;
 }
 
 /* TABLET AND BELOW (0–768) */
