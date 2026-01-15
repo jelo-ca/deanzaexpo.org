@@ -46,7 +46,7 @@ export default function Home() {
       {projects.length > 3 && <Projects projectData={projects} />}
       <Team />
       {/* <Sponsors /> */}
-      {/* <FAQ /> */}
+      <FAQ />
       <Footer />
     </>
   );

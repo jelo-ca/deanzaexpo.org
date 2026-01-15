@@ -6,7 +6,7 @@
 
 /* Desktop defaults */
 .about-logo {
-    width: 100%;
+    width: 50%;
     height: auto;
     object-fit: cover;
     border: 1px solid black;
@@ -33,7 +33,7 @@
         align-items: stretch;
     }
 
-    .about-image,
+    .about-logo,
     .about-text-container {
         width: 100%;
     }
@@ -50,7 +50,7 @@
         gap: 1rem;
     }
 
-    .about-image {
+    .about-logo {
         padding: 6%;
     }
 }

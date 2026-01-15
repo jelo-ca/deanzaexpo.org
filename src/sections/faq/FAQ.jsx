@@ -4,11 +4,11 @@ import "./FAQ.css";
 const FAQS = [
   {
     q: "What is DAX?",
-    a: "",
+    a: "De Anza Expo (DAX) is a student-led event aimed to connect students and professionals through interactive booths, workshops, and talks; mimicing conventions like Nvidia GTC and DATA + AI Summit.",
   },
   {
     q: "Who can attend?",
-    a: "",
+    a: "DAX is free for all registered De Anza Students while professionals are invited through an organized ticketing system.",
   },
   {
     q: "How do I register?",
@@ -16,7 +16,7 @@ const FAQS = [
   },
   {
     q: "Can I present a project?",
-    a: "",
+    a: "Yes! We accomodate private student projects. contact us at contact@deanzaexpo.org so we can assign you a spot.",
   },
 ];
 export default function FAQ() {

@@ -1,10 +1,6 @@
 import "./Card.css";
 import {motion, scale, spring} from "framer-motion";
 
-const observer = new IntersectionObserver(() => {
-    
-}, {threshold: 0.5});
-
 const variant = {
     hidden: {opacity: 0, y: 50},
     visible: {opacity: 1, y: 0}
@@ -16,12 +12,13 @@ export default function Card({ data, type }) {
     return (
       <motion.div
         className="card speaker"
+        viewport={{ once: true, amount: .75 }}
         variants={variant}
         initial="hidden"
-        animate="visible"
-        transition={{ duration: 0.2 }}
+        whileInView="visible"
+        transition={{ duration: 0.5 }}
 
-        whileHover={{scale: 1.1}}
+        whileHover={{scale: 1.1, transition:{duration:.2}}}
       >
         {data.headshot_url && (
           <img src={data.headshot_url} alt="speaker_headshot" />
@@ -37,11 +34,12 @@ export default function Card({ data, type }) {
     return (
       <motion.div
         className="card project"
+        viewport={{ once: true, amount: .75 }}
         initial={{ opacity: 0, y: 80, originX:0 }}
-        animate={{ opacity: 1, y: 0, originX:0 }}
-        transition={{ duration: .2 }}
+        whileInView={{ opacity: 1, y: 0, originX:0 }}
+        transition={{ duration: .5 }}
 
-        whileHover={{scale: 1.1}}
+        whileHover={{scale: 1.1, transition:{duration:.2}}}
       >
         {data.image_url && <img src={data.image_url} alt="project_thumbnail" />}
         <div className="card-text">
@@ -54,12 +52,13 @@ export default function Card({ data, type }) {
     return (
       <motion.div
         style={{ margin: "0 0 1rem 0" }}
+        viewport={{ once: true, amount: .75 }}
         className="card team-member fadeUp"
         initial={{ opacity: 0, y: 50, originX:0 }}
-        animate={{ opacity: 1, y: 0, originX:0  }}
-        transition={{ duration: .2 }}
+        whileInView={{ opacity: 1, y: 0, originX:0  }}
+        transition={{ duration: .5 }}
 
-        whileHover={{scale: 1.1}}
+        whileHover={{scale: 1.1, transition:{duration:.2}}}
       >
         {data.headshot_url && (
           <img src={data.headshot_url} alt="team_headshot" />
