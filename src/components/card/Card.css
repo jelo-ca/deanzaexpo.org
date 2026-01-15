@@ -1,3 +1,7 @@
+.card:hover{
+    cursor: pointer;
+}
+
 .card.speaker {
     display: flex;
     flex-direction: column;
@@ -11,7 +15,6 @@
     flex: 0 0 50%;
     width: 50%;
     height: auto;
-    border: 2px solid black
 }
 
 .card img {
@@ -27,6 +30,7 @@
 
 .card-text {
     padding: .5rem;
+    margin: .5rem;
 }
 
 /* TABLET AND BELOW (0–768) */

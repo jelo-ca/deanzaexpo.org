@@ -5,12 +5,12 @@
 }
 
 /* Desktop defaults */
-.about-image {
-    width: 50%;
+.about-logo {
+    width: 100%;
     height: auto;
     object-fit: cover;
     border: 1px solid black;
-    padding: 10%;
+    margin: auto;
 }
 
 .about-text-container {
