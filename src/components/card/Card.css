@@ -29,12 +29,12 @@
 }
 
 .card-text {
-    padding: .5rem;
+    padding: .75rem;
     margin: .5rem;
 }
 
 .card-text p {
-    font-size: 1rem;
+    font-size: 1.25rem;
 }
 
 /* TABLET AND BELOW (0–768) */

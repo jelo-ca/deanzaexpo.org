@@ -16,7 +16,7 @@ export default function Card({ data, type }) {
         variants={variant}
         initial="hidden"
         whileInView="visible"
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.2 }}
         whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
       >
         {data.headshot_url && (
@@ -36,8 +36,8 @@ export default function Card({ data, type }) {
         viewport={{ once: true, amount: 0.75 }}
         initial={{ opacity: 0, y: 80, originX: 0 }}
         whileInView={{ opacity: 1, y: 0, originX: 0 }}
-        transition={{ duration: 0.5 }}
-        whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+        transition={{ duration: 0.2 }}
+        whileHover={{ scale: 1.075, transition: { duration: 0.2 } }}
       >
         {data.image_url && <img src={data.image_url} alt="project_thumbnail" />}
         <div className="card-text">
@@ -54,7 +54,7 @@ export default function Card({ data, type }) {
         className="card team-member fadeUp"
         initial={{ opacity: 0, y: 50, originX: 0 }}
         whileInView={{ opacity: 1, y: 0, originX: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.2 }}
         whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
       >
         {data.headshot_url && (
