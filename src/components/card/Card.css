@@ -1,4 +1,4 @@
-.card:hover{
+.card:hover {
     cursor: pointer;
 }
 
@@ -31,6 +31,10 @@
 .card-text {
     padding: .5rem;
     margin: .5rem;
+}
+
+.card-text p {
+    font-size: 1rem;
 }
 
 /* TABLET AND BELOW (0–768) */

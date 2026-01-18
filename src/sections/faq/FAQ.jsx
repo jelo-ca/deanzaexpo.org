@@ -12,7 +12,7 @@ const FAQS = [
   },
   {
     q: "How do I register?",
-    a: "Registration will be available as we get closer to the event date",
+    a: "Registration will be available as we get closer to the event date.",
   },
   {
     q: "Can I present a project?",
