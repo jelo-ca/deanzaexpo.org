@@ -33,15 +33,15 @@ export default function Footer() {
             <li>
               <a href="#about-section">About</a>
             </li>
-            <li>
+            {/* <li>
               <a href="#speakers-section">Speakers</a>
-            </li>
+            </li> */}
             <li>
               <a href="#projects-section">Projects</a>
             </li>
-            <li>
+            {/* <li>
               <a href="#sponsors-section">Sponsors</a>
-            </li>
+            </li> */}
             <li>
               <a href="#faq-section">FAQ</a>
             </li>
