@@ -34,6 +34,11 @@ export default function Team(organizerData) {
           data={{ name: "Dicanio Liong", role: "Logistics Lead" }}
           type="team"
         />
+        <Card
+          id={"member6"}
+          data={{ name: "Hsinwei Chang", role: "Marketing Lead" }}
+          type="team"
+        />
       </div>
     </section>
   );
