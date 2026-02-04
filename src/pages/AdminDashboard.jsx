@@ -5,17 +5,11 @@ import { uploadToMediaBucket } from "../lib/upload";
 import "./AdminDashboard.css";
 
 import {
-  getProjects,
-  createProject,
-  updateProject,
-  deleteProject,
-} from "../lib/apiProjects";
-import {
-  getSpeakers,
-  createSpeaker,
-  updateSpeaker,
-  deleteSpeaker,
-} from "../lib/apiSpeakers";
+  getData,
+  createData,
+  updateData,
+  deleteData,
+} from "../lib/apiData.js";
 
 const emptyProject = {
   title: "",
@@ -45,10 +39,15 @@ export default function AdminDashboard() {
   const [speakerForm, setSpeakerForm] = useState(emptySpeaker);
   const [editingSpeakerId, setEditingSpeakerId] = useState(null);
 
+  const [organizers, setOrganizers] = useState([]);
+  const [organizerForm, setOrganizerForm] = useState(emptySpeaker);
+  const [editingOrganizerId, setEditingOrganizerId] = useState(null);
+
   async function refresh() {
-    const [p, s] = await Promise.all([getProjects(), getSpeakers()]);
+    const [p, s, o] = await Promise.all([getData("projects"), getData("speakers"), getData("organizers")]);
     setProjects(p);
     setSpeakers(s);
+    setOrganizers(o);
   }
 
   useEffect(() => {
@@ -61,12 +60,12 @@ export default function AdminDashboard() {
     setBusy(true);
     try {
       if (editingProjectId) {
-        await updateProject(editingProjectId, projectForm);
+        await updateData(editingProjectId, projectForm, "projects");
         setEditingProjectId(null);
       } else {
         const { data } = await supabase.auth.getSession();
         console.log("session:", data.session);
-        await createProject(projectForm);
+        await createData(projectForm, "projects");
       }
       setProjectForm(emptyProject);
       await refresh();
@@ -83,10 +82,10 @@ export default function AdminDashboard() {
     setBusy(true);
     try {
       if (editingSpeakerId) {
-        await updateSpeaker(editingSpeakerId, speakerForm);
+        await updateData(editingSpeakerId, speakerForm, "speakers");
         setEditingSpeakerId(null);
       } else {
-        await createSpeaker(speakerForm);
+        await createData(speakerForm, "speakers");
       }
       setSpeakerForm(emptySpeaker);
       await refresh();
@@ -266,7 +265,7 @@ export default function AdminDashboard() {
                           type="button"
                           disabled={busy}
                           onClick={() =>
-                            updateProject(p.id, { ...p, image_url: "" }).then(
+                            updateData(p.id, { ...p, image_url: "" }, "projects").then(
                               refresh
                             )
                           }
@@ -295,7 +294,7 @@ export default function AdminDashboard() {
                     <button
                       type="button"
                       disabled={busy}
-                      onClick={() => deleteProject(p.id).then(refresh)}
+                      onClick={() => deleteData(p.id, "projects").then(refresh)}
                     >
                       Delete
                     </button>
@@ -449,10 +448,10 @@ export default function AdminDashboard() {
                           type="button"
                           disabled={busy}
                           onClick={() =>
-                            updateSpeaker(s.id, {
+                            updateData(s.id, {
                               ...s,
                               headshot_url: "",
-                            }).then(refresh)
+                            }, "speakers").then(refresh)
                           }
                         >
                           Delete Image
@@ -481,7 +480,7 @@ export default function AdminDashboard() {
                     <button
                       type="button"
                       disabled={busy}
-                      onClick={() => deleteSpeaker(s.id).then(refresh)}
+                      onClick={() => deleteData(s.id, "speakers").then(refresh)}
                     >
                       Delete
                     </button>
