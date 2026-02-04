@@ -1,10 +1,8 @@
-// Data access layer to prevent raw databse calls
-
 import { supabase } from "./supabaseClient";
 
-export async function getSpeakers() {
+export async function getData(table) {
   const { data, error } = await supabase
-    .from("speakers")
+    .from(table)
     .select("*")
     .order("created_at", { ascending: false });
 
@@ -12,19 +10,24 @@ export async function getSpeakers() {
   return data;
 }
 
-// Data creation, update, and delete
-export async function createSpeaker(payload) {
+// Data creation, update, and delete functions
+
+// Input:
+// payload = { name: "Speaker Name", bio: "Speaker Bio", ... },
+// table = "speakers"
+export async function createData(payload, table) {
   const { data, error } = await supabase
-    .from("speakers")
+    .from(table)
     .insert(payload)
     .select()
     .single();
   if (error) throw error;
   return data;
 }
-export async function updateSpeaker(id, payload) {
+
+export async function updateData(id, payload, table) {
   const { data, error } = await supabase
-    .from("speakers")
+    .from(table)
     .update(payload)
     .eq("id", id)
     .select()
@@ -32,7 +35,7 @@ export async function updateSpeaker(id, payload) {
   if (error) throw error;
   return data;
 }
-export async function deleteSpeaker(id) {
-  const { error } = await supabase.from("speakers").delete().eq("id", id);
+export async function deleteData(id, table) {
+  const { error } = await supabase.from(table).delete().eq("id", id);
   if (error) throw error;
 }

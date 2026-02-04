@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { getSpeakers } from "../lib/apiSpeakers.js";
-import { getProjects } from "../lib/apiProjects.js";
+import { getData } from "../lib/apiData.js";
 
 // SECTIONS
 import Hero from "../sections/hero/Hero";
@@ -16,26 +15,30 @@ import Team from "../sections/team/Team.jsx";
 export default function Home() {
   const [speakers, setSpeakers] = useState([]);
   const [projects, setProjects] = useState([]);
+  const [organizers, setOrganizers] = useState([]);
   const [err, setErr] = useState("");
 
   async function refresh() {
     setErr("");
 
-    const s = await getSpeakers();
-    const p = await getProjects();
+    const s = await getData("speakers");
+    const p = await getData("projects");
+    const o = await getData("organizers");
 
     if (s?.error) throw s.error;
     if (p?.error) throw p.error;
+    if (o?.error) throw o.error;
 
     setSpeakers(s);
     setProjects(p);
+    setOrganizers(o);
   }
 
   useEffect(() => {
     refresh().catch((e) => setErr(e.message));
   }, []);
 
-  console.log(speakers, projects, err);
+  console.log(speakers, projects, organizers, err);
 
   return (
     <>
@@ -44,7 +47,7 @@ export default function Home() {
       <About />
       {speakers.length > 3 && <Speakers speakerData={speakers} />}
       {projects.length > 3 && <Projects projectData={projects} />}
-      <Team />
+      {organizers.length > 3 && <Team organizerData={organizers} />}
       {/* <Sponsors /> */}
       <FAQ />
       <Footer />

@@ -51,21 +51,20 @@ export default function Card({ data, type }) {
       <motion.div
         style={{ margin: "0 0 1rem 0" }}
         viewport={{ once: true, amount: 0.75 }}
-        className="card team-member fadeUp"
+        className="card team-member"
         initial={{ opacity: 0, y: 50, originX: 0 }}
         whileInView={{ opacity: 1, y: 0, originX: 0 }}
         transition={{ duration: 0.2 }}
         whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
       >
-        {data.headshot_url && (
-          <img src={data.headshot_url} alt="team_headshot" />
-        )}
-        <div className="card-text">
+        <a href={data.linkedin_url}>
+          <div className="card-text">
           <h4>{data.name}</h4>
           <p className="text" style={{ color: "var(--gold)" }}>
             {data.role}
           </p>
         </div>
+        </a>
       </motion.div>
     );
 }

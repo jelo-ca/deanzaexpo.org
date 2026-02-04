@@ -1,3 +1,6 @@
+import {useInView} from "react-intersection-observer";
+import { motion } from "framer-motion";
+
 import Logo from "../../components/logo/Logo";
 import "./About.css";
 
