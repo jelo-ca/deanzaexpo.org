@@ -1,13 +1,30 @@
 #team-section {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .team-container {
-    width: 60%;
-    display: grid;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     grid-template-columns: repeat(2, 1fr);
+}
+.executive-team-container {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 2rem;
+}
+
+.pillars-container {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
 /* TABLET AND BELOW (0–768) */
