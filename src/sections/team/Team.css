@@ -7,24 +7,16 @@
 .team-container {
     width: 100%;
     display: flex;
-    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
     grid-template-columns: repeat(2, 1fr);
 }
-.executive-team-container {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 2rem;
-}
 
-.pillars-container {
-    display: flex;
-    justify-content: space-between;
-    text-align: center;
-    gap: 2rem;
-    margin-top: 2rem;
+.pillar {
+    border: 1px solid white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    width: 20%;
 }
 
 /* TABLET AND BELOW (0–768) */
