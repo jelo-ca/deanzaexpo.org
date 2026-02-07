@@ -4,12 +4,7 @@ import { logout } from "../lib/auth";
 import { uploadToMediaBucket } from "../lib/upload";
 import "./AdminDashboard.css";
 
-import {
-  getData,
-  createData,
-  updateData,
-  deleteData,
-} from "../lib/apiData.js";
+import { getData, createData, updateData, deleteData } from "../lib/apiData.js";
 
 const emptyProject = {
   title: "",
@@ -35,16 +30,12 @@ export default function AdminDashboard() {
   const [projectForm, setProjectForm] = useState(emptyProject);
   const [editingProjectId, setEditingProjectId] = useState(null);
 
-  const [speakers, setSpeakers] = useState([]);
-  const [speakerForm, setSpeakerForm] = useState(emptySpeaker);
-  const [editingSpeakerId, setEditingSpeakerId] = useState(null);
-
-  const [organizers, setOrganizers] = useState([]);
-  const [organizerForm, setOrganizerForm] = useState(emptySpeaker);
-  const [editingOrganizerId, setEditingOrganizerId] = useState(null);
-
   async function refresh() {
-    const [p, s, o] = await Promise.all([getData("projects"), getData("speakers"), getData("organizers")]);
+    const [p, s, o] = await Promise.all([
+      getData("projects"),
+      getData("speakers"),
+      getData("organizers"),
+    ]);
     setProjects(p);
     setSpeakers(s);
     setOrganizers(o);
@@ -76,25 +67,6 @@ export default function AdminDashboard() {
     }
   }
 
-  async function submitSpeaker(e) {
-    e.preventDefault();
-    setErr("");
-    setBusy(true);
-    try {
-      if (editingSpeakerId) {
-        await updateData(editingSpeakerId, speakerForm, "speakers");
-        setEditingSpeakerId(null);
-      } else {
-        await createData(speakerForm, "speakers");
-      }
-      setSpeakerForm(emptySpeaker);
-      await refresh();
-    } catch (e2) {
-      setErr(e2.message);
-    } finally {
-      setBusy(false);
-    }
-  }
   async function handleUpload(file, folder, setForm, field, fileName) {
     setErr("");
     setBusy(true);
@@ -201,7 +173,7 @@ export default function AdminDashboard() {
                     "projects",
                     setProjectForm,
                     "image_url",
-                    `${projectForm.name}`
+                    `${projectForm.name}`,
                   );
               }}
             />
@@ -265,9 +237,11 @@ export default function AdminDashboard() {
                           type="button"
                           disabled={busy}
                           onClick={() =>
-                            updateData(p.id, { ...p, image_url: "" }, "projects").then(
-                              refresh
-                            )
+                            updateData(
+                              p.id,
+                              { ...p, image_url: "" },
+                              "projects",
+                            ).then(refresh)
                           }
                         >
                           Delete Image
@@ -382,7 +356,7 @@ export default function AdminDashboard() {
                     file,
                     "headshots",
                     setSpeakerForm,
-                    "headshot_url"
+                    "headshot_url",
                   );
               }}
             />
@@ -448,10 +422,14 @@ export default function AdminDashboard() {
                           type="button"
                           disabled={busy}
                           onClick={() =>
-                            updateData(s.id, {
-                              ...s,
-                              headshot_url: "",
-                            }, "speakers").then(refresh)
+                            updateData(
+                              s.id,
+                              {
+                                ...s,
+                                headshot_url: "",
+                              },
+                              "speakers",
+                            ).then(refresh)
                           }
                         >
                           Delete Image
