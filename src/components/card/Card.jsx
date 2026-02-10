@@ -6,6 +6,21 @@ const variant = {
   visible: { opacity: 1, y: 0 },
 };
 
+function sanitizeLink(raw) {
+  try {
+    if (!raw) return null;
+    const u = new URL(raw);
+    if (u.protocol === "http:" || u.protocol === "https:") return u.href;
+  } catch (e) {}
+  return null;
+}
+
+function sanitizeImage(raw) {
+  const url = sanitizeLink(raw);
+  if (!url) return null;
+  return url;
+}
+
 export default function Card({ data, type }) {
   if (type == "speaker")
     return (
@@ -56,14 +71,33 @@ export default function Card({ data, type }) {
         transition={{ duration: 0.2 }}
         whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
       >
-        <a href={data.linkedinURL} target="_blank" rel="noreferrer">
-          <div className="card-text">
-            <h4>{data.name}</h4>
-            <p className="text" style={{ color: "var(--gold)" }}>
-              {data.role}
-            </p>
-          </div>
-        </a>
+        {(() => {
+          const linkedin = sanitizeLink(data?.linkedinURL);
+          const headshot = sanitizeImage(data?.headshot_url);
+          const content = (
+            <>
+              {headshot && (
+                <div className="avatar">
+                  <img src={headshot} alt="team_headshot" />
+                </div>
+              )}
+              <div className="card-text">
+                <h4>{data.name}</h4>
+                <p className="text" style={{ color: "var(--gold)" }}>
+                  {data.role}
+                </p>
+              </div>
+            </>
+          );
+
+          return linkedin ? (
+            <a href={linkedin} target="_blank" rel="noreferrer">
+              {content}
+            </a>
+          ) : (
+            <div>{content}</div>
+          );
+        })()}
       </motion.div>
     );
 }
