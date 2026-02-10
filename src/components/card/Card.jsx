@@ -1,5 +1,5 @@
 import "./Card.css";
-import { motion, scale, spring } from "framer-motion";
+import { motion } from "framer-motion";
 
 const variant = {
   hidden: { opacity: 0, y: 50 },
@@ -7,7 +7,6 @@ const variant = {
 };
 
 export default function Card({ data, type }) {
-  console.log(data);
   if (type == "speaker")
     return (
       <motion.div
