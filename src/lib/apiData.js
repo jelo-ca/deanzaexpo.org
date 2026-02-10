@@ -1,9 +1,9 @@
 import { supabase } from "./supabaseClient";
 
-export async function getData(table) {
+export async function getData(table, fields = "*") {
   const { data, error } = await supabase
     .from(table)
-    .select("*")
+    .select(fields)
     .order("created_at", { ascending: false });
 
   if (error) throw error;
