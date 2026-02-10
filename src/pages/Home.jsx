@@ -21,9 +21,11 @@ export default function Home() {
   async function refresh() {
     setErr("");
 
-    const s = await getData("speakers");
-    const p = await getData("projects");
-    const o = await getData("organizers");
+    const [s, p, o] = await Promise.all([
+      getData("speakers", "id,headshot_url,name,role,org"),
+      getData("projects", "id,title,description,image_url"),
+      getData("organizers", "id,name,role,team,linkedinURL"),
+    ]);
 
     if (s?.error) throw s.error;
     if (p?.error) throw p.error;
@@ -37,8 +39,6 @@ export default function Home() {
   useEffect(() => {
     refresh().catch((e) => setErr(e.message));
   }, []);
-
-  console.log(speakers, projects, organizers, err);
 
   return (
     <>
