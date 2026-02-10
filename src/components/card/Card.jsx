@@ -1,5 +1,5 @@
 import "./Card.css";
-import { motion, scale, spring } from "framer-motion";
+import { motion } from "framer-motion";
 
 const variant = {
   hidden: { opacity: 0, y: 50 },
@@ -7,7 +7,6 @@ const variant = {
 };
 
 export default function Card({ data, type }) {
-  console.log(data);
   if (type == "speaker")
     return (
       <motion.div
@@ -57,13 +56,13 @@ export default function Card({ data, type }) {
         transition={{ duration: 0.2 }}
         whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
       >
-        <a href={data.linkedin_url}>
+        <a href={data.linkedinURL} target="_blank" rel="noreferrer">
           <div className="card-text">
-          <h4>{data.name}</h4>
-          <p className="text" style={{ color: "var(--gold)" }}>
-            {data.role}
-          </p>
-        </div>
+            <h4>{data.name}</h4>
+            <p className="text" style={{ color: "var(--gold)" }}>
+              {data.role}
+            </p>
+          </div>
         </a>
       </motion.div>
     );
