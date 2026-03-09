@@ -7,6 +7,18 @@
 .team-container {
     width: 100%;
     display: flex;
+<<<<<<< HEAD
+    justify-content: space-evenly;
+    text-align: left;
+    margin-top: 2rem;
+}
+
+.pillar {
+    border: 2px solid white;
+    border-radius: 2rem;
+    min-width: 20%;
+    padding: 1rem;
+=======
     gap: 2rem;
     justify-content: center;
     grid-template-columns: repeat(2, 1fr);
@@ -17,6 +29,7 @@
     padding: 1rem;
     border-radius: 0.5rem;
     width: 20%;
+>>>>>>> master
 }
 
 /* TABLET AND BELOW (0–768) */
