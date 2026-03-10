@@ -2,25 +2,28 @@
   margin: 2rem auto;
   max-width: 1100px;
   padding: 0 1rem;
-}
-
-#admin-dashboard > header {
-  align-items: center;
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 1rem;
+  flex-direction: column;
 }
 
-#admin-dashboard > nav {
+#admin-dashboard>header {
+  position: static;
+  align-items: center;
+  width: 100%;
+  display: flex;
+  margin: 1rem 0;
+}
+
+#admin-dashboard>nav {
   border-bottom: 1px solid #2a2a2a;
   display: flex;
   gap: 0.5rem;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
   overflow-x: auto;
   padding-bottom: 0.75rem;
 }
 
-#admin-dashboard > nav button {
+#admin-dashboard>nav button {
   background: transparent;
   border: 1px solid #353535;
   border-radius: 999px;
@@ -31,7 +34,7 @@
   transition: background-color 120ms ease;
 }
 
-#admin-dashboard > nav button.active {
+#admin-dashboard>nav button.active {
   background: #d5b46d;
   border-color: #d5b46d;
   color: #111;
@@ -122,7 +125,7 @@
 
 .actions button,
 .admin-list-item button,
-#admin-dashboard > header button {
+#admin-dashboard>header button {
   background: #222;
   border: 1px solid #3a3a3a;
   border-radius: 8px;

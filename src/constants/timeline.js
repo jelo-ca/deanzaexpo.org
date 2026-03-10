@@ -30,6 +30,6 @@ export const TIMELINE_MILESTONES = [
     date: "May 2026",
     title: "DAX Expo Day",
     description:
-      "The first DAX Expo went live — showcasing 40+ student projects to hundreds of attendees and industry professionals.",
+      "The first DAX Expo goes live — showcasing 40+ student projects to hundreds of attendees and industry professionals.",
   },
 ];
