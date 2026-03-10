@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 export default function Hero() {
   return (
     <section id="hero-section">
-      <img class="hero-background" src="expo.jpg" alt="" />
-      <div class="overlay">
+      <img className="hero-background" src="expo.jpg" alt="" />
+      <div className="overlay">
         <motion.h2
-          class="tagline"
+          className="tagline"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}

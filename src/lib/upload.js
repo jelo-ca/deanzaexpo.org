@@ -1,4 +1,4 @@
-import { supabase } from "./supabaseClient";
+import { supabase } from "./supabase";
 
 function getExt(filename = "") {
   const parts = filename.split(".");

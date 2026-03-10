@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import Card from "../../components/card/Card";
 import "./Team.css";
 
@@ -6,7 +5,7 @@ function FilteredMap({ data, team }) {
   return data
     .toReversed()
     .filter((o) => o.team === team)
-    .map((o) => <Card id={o.id} data={o} type="team" />);
+    .map((o) => <Card key={o.id} id={o.id} data={o} type="team" />);
 }
 
 export default function Team({ organizerData }) {

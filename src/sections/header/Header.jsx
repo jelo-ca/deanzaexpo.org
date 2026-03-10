@@ -1,23 +1,15 @@
 import "./Header.css";
+import { NAV_LINKS } from "../../constants/navigation";
+
 export default function Header() {
   return (
     <header>
       <nav>
-        <li>
-          <a href="#about-section">About</a>
-        </li>
-        {/* <li>
-          <a href="#speakers-section">Speakers</a>
-        </li> */}
-        <li>
-          <a href="#projects-section">Projects</a>
-        </li>
-        {/* <li>
-          <a href="#sponsors-section">Sponsors</a>
-        </li> */}
-        <li>
-          <a href="#faq-section">FAQ</a>
-        </li>
+        {NAV_LINKS.map(({ href, label }) => (
+          <li key={href}>
+            <a href={href}>{label}</a>
+          </li>
+        ))}
       </nav>
       <img className="header-logo" src="/DAX_logo.png" alt="DAX logo" />
     </header>

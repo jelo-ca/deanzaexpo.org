@@ -1,36 +1,21 @@
 import { useState, useEffect } from "react";
-import { updateData, createData, getData, deleteData } from "../../lib/apiData";
+import { getData, createData, updateData, deleteData } from "../../lib/api";
 
 export default function AdminForm({ dataType, dataFormat = {} }) {
-  const [formData, setFormData] = useState(dataFormat || {});
-  const [err, setErr] = useState("");
-  const [busy, setBusy] = useState(false);
+  const [formData,   setFormData]   = useState(dataFormat || {});
+  const [err,        setErr]        = useState("");
+  const [busy,       setBusy]       = useState(false);
   const [selectedId, setSelectedId] = useState(null);
-
-  const [speakers, setSpeakers] = useState([]);
-  const [projects, setProjects] = useState([]);
-  const [organizers, setOrganizers] = useState([]);
+  const [items,      setItems]      = useState([]);
 
   async function refresh() {
-    const [p, s, o] = await Promise.all([
-      getData("projects"),
-      getData("speakers"),
-      getData("organizers"),
-    ]);
-    setProjects(p);
-    setSpeakers(s);
-    setOrganizers(o);
+    const data = await getData(dataType);
+    setItems(data);
   }
 
   useEffect(() => {
     refresh().catch((e) => setErr(e.message));
-  }, []);
-  const items =
-    dataType === "projects"
-      ? projects
-      : dataType === "speakers"
-        ? speakers
-        : organizers;
+  }, [dataType]);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -89,7 +74,7 @@ export default function AdminForm({ dataType, dataFormat = {} }) {
 
       <form onSubmit={handleSubmit} className="admin-edit-form">
         {err && <div className="error">{err}</div>}
-        {Object.entries(formData || {}).map(([key, value]) =>
+        {Object.entries(formData || {}).map(([key]) =>
           key === "id" || key === "created_at" ? null : (
             <div key={key} className="field">
               <label htmlFor={key}>{key}</label>

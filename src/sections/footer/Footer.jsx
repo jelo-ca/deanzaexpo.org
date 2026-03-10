@@ -1,4 +1,5 @@
 import "./Footer.css";
+import { NAV_LINKS } from "../../constants/navigation";
 
 export default function Footer() {
   return (
@@ -11,17 +12,14 @@ export default function Footer() {
             <p>Email:</p>
             <p>contact@deanzaexpo.org</p>
           </div>
-
           <div className="info">
             <p>Instagram:</p>
             <p>@deanzaexpo</p>
           </div>
-
           <div className="info">
             <p>Address:</p>
             <p>21250 Stevens Creek Blvd. Cupertino, CA</p>
           </div>
-
           <div className="info">
             <p>Phone:</p>
             <p>(747) 305-4716</p>
@@ -30,21 +28,11 @@ export default function Footer() {
 
         <nav className="footer-nav" aria-label="Footer navigation">
           <ul>
-            <li>
-              <a href="#about-section">About</a>
-            </li>
-            {/* <li>
-              <a href="#speakers-section">Speakers</a>
-            </li> */}
-            <li>
-              <a href="#projects-section">Projects</a>
-            </li>
-            {/* <li>
-              <a href="#sponsors-section">Sponsors</a>
-            </li> */}
-            <li>
-              <a href="#faq-section">FAQ</a>
-            </li>
+            {NAV_LINKS.map(({ href, label }) => (
+              <li key={href}>
+                <a href={href}>{label}</a>
+              </li>
+            ))}
           </ul>
         </nav>
       </div>
