@@ -8,6 +8,7 @@ import FAQ      from "../sections/faq/FAQ";
 import Header   from "../sections/header/Header.jsx";
 import Footer   from "../sections/footer/Footer.jsx";
 import Team     from "../sections/team/Team.jsx";
+import Timeline from "../sections/timeline/Timeline.jsx";
 
 export default function Home() {
   const { speakers, projects, organizers } = useHomeData();
@@ -20,6 +21,7 @@ export default function Home() {
       {speakers.length   > 3 && <Speakers speakerData={speakers}     />}
       {projects.length   > 3 && <Projects projectData={projects}     />}
       {organizers.length > 3 && <Team     organizerData={organizers} />}
+      <Timeline />
       {/* <Sponsors /> */}
       <FAQ />
       <Footer />
