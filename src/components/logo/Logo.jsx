@@ -1,4 +1,4 @@
-import { delay, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function Logo({ className, width = 220, height = 176 }) {
   const pathVariant = {

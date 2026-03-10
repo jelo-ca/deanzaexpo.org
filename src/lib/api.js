@@ -1,4 +1,4 @@
-import { supabase } from "./supabaseClient";
+import { supabase } from "./supabase";
 
 export async function getData(table, fields = "*") {
   const { data, error } = await supabase
@@ -9,8 +9,6 @@ export async function getData(table, fields = "*") {
   if (error) throw error;
   return data;
 }
-
-// Data creation, update, and delete functions
 
 // Input:
 // payload = { name: "Speaker Name", bio: "Speaker Bio", ... },
@@ -35,6 +33,7 @@ export async function updateData(id, payload, table) {
   if (error) throw error;
   return data;
 }
+
 export async function deleteData(id, table) {
   const { error } = await supabase.from(table).delete().eq("id", id);
   if (error) throw error;

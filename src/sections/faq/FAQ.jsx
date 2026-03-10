@@ -1,92 +1,33 @@
 import { useState } from "react";
 import "./FAQ.css";
+import { FAQ_ITEMS } from "../../constants/faq";
 
-const FAQS = [
-  {
-    q: "What is DAX?",
-    a: "De Anza Expo (DAX) is a student-led event aimed to connect students and professionals through interactive booths, workshops, and talks; mimicing conventions like Nvidia GTC and DATA + AI Summit.",
-  },
-  {
-    q: "Who can attend?",
-    a: "DAX is free for all registered De Anza Students while professionals are invited through an organized ticketing system.",
-  },
-  {
-    q: "How do I register?",
-    a: "Registration will be available as we get closer to the event date.",
-  },
-  {
-    q: "Can I present a project?",
-    a: "Yes! We accomodate private student projects. contact us at contact@deanzaexpo.org so we can assign you a spot.",
-  },
-];
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState(-1); // start closed
+  const [openIndex, setOpenIndex] = useState(-1);
 
   return (
     <section id="faq-section">
       <h2>FAQ</h2>
-      <div className="faq-container" style={{ display: "grid", gap: 12 }}>
-        {FAQS.map((item, i) => {
+      <div className="faq-container">
+        {FAQ_ITEMS.map((item, i) => {
           const isOpen = i === openIndex;
           return (
             <div
               key={item.q}
-              style={{
-                border: "1px solid rgba(255,255,255,0.14)",
-                borderRadius: 16,
-                overflow: "hidden",
-                background: "rgba(255,255,255,0.04)",
-              }}
-              className="fadeUp"
+              className={`faq-item fadeUp${isOpen ? " faq-item--open" : ""}`}
             >
               <button
                 type="button"
                 onClick={() => setOpenIndex(isOpen ? -1 : i)}
                 aria-expanded={isOpen}
-                style={{
-                  width: "100%",
-                  textAlign: "left",
-                  padding: "16px 18px",
-                  cursor: "pointer",
-                  background: "transparent",
-                  border: "none",
-                  color: "inherit",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  gap: 12,
-                  fontSize: "1rem",
-                  fontWeight: 600,
-                }}
+                className="faq-question"
               >
                 {item.q}
-                <span
-                  style={{
-                    opacity: 0.7,
-                    fontSize: "1.25rem",
-                    lineHeight: 1,
-                    color: "white",
-                  }}
-                >
-                  {isOpen ? "–" : "+"}
-                </span>
+                <span className="faq-chevron">{isOpen ? "–" : "+"}</span>
               </button>
 
-              <div
-                style={{
-                  maxHeight: isOpen ? 200 : 0,
-                  transition: "max-height 250ms ease",
-                }}
-              >
-                <div
-                  style={{
-                    padding: "0 18px 16px",
-                    opacity: 0.9,
-                    lineHeight: 1.6,
-                  }}
-                >
-                  {item.a}
-                </div>
+              <div className="faq-answer-wrapper">
+                <div className="faq-answer">{item.a}</div>
               </div>
             </div>
           );

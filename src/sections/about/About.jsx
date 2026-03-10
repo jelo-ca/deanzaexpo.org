@@ -1,4 +1,3 @@
-import {useInView} from "react-intersection-observer";
 import { motion } from "framer-motion";
 
 import Logo from "../../components/logo/Logo";
@@ -9,7 +8,7 @@ export default function About() {
     <section id="about-section">
       {/* <img class="about-image" src="DAX_logo.png" alt="About DAX" /> */}
       <Logo className="about-logo" width={300} height={240} />
-      <div class="about-text-container">
+      <div className="about-text-container">
         <h2>Who we are</h2>
         <p>
           At DAX, we’re passionate about showcasing the creativity and

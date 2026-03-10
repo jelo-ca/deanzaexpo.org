@@ -1,7 +1,7 @@
 // Admin authentication. Login and Logout functions
 // Login flow so browser can attach auth tokens to reqs
 //Supabase enforces RLS policies
-import { supabase } from "./supabaseClient";
+import { supabase } from "./supabase";
 
 export async function login(email, password) {
   const { data, error } = await supabase.auth.signInWithPassword({

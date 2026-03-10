@@ -7,7 +7,7 @@ const variant = {
 };
 
 export default function Card({ data, type }) {
-  if (type == "speaker")
+  if (type === "speaker")
     return (
       <motion.div
         className="card speaker"
@@ -28,7 +28,7 @@ export default function Card({ data, type }) {
         </div>
       </motion.div>
     );
-  if (type == "project")
+  if (type === "project")
     return (
       <motion.div
         className="card project"
@@ -45,7 +45,7 @@ export default function Card({ data, type }) {
         </div>
       </motion.div>
     );
-  if (type == "team")
+  if (type === "team")
     return (
       <motion.div
         style={{ margin: "0 0 1rem 0" }}
