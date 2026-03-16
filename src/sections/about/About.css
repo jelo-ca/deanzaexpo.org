@@ -2,6 +2,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    min-height: 100vh;
+    padding-top: 72px;
 }
 
 /* Desktop defaults */

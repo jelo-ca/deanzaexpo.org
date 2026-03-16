@@ -8,6 +8,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
 }
 
 *::-webkit-scrollbar {
@@ -53,6 +54,8 @@ body {
 section {
   background: black;
   padding: 1rem 1rem;
+  scroll-snap-align: start;
+  scroll-margin-top: 72px;
 }
 
 button {

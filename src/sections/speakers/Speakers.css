@@ -1,0 +1,6 @@
+#speakers-section {
+    min-height: 100vh;
+    padding-top: 72px;
+    display: flex;
+    flex-direction: column;
+}

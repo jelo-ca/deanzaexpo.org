@@ -1,5 +1,6 @@
 import "./Card.css";
 import { motion } from "framer-motion";
+import { FaLinkedin } from "react-icons/fa";
 
 const variant = {
   hidden: { opacity: 0, y: 50 },
@@ -58,7 +59,10 @@ export default function Card({ data, type }) {
       >
         <a href={data.linkedinURL} target="_blank" rel="noreferrer">
           <div className="card-text">
-            <h4>{data.name}</h4>
+            <h4 className="team-name">
+              {data.name}
+              <FaLinkedin className="linkedin-icon" />
+            </h4>
             <p className="text" style={{ color: "var(--gold)" }}>
               {data.role}
             </p>

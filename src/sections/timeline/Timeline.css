@@ -3,6 +3,8 @@
     flex-direction: column;
     align-items: center;
     padding: 2rem 1rem 4rem;
+    min-height: 100vh;
+    padding-top: calc(72px + 2rem);
 }
 
 #timeline-section h2 {

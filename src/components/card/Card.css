@@ -2,6 +2,24 @@
     cursor: pointer;
 }
 
+.team-name {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.linkedin-icon {
+    color: #0a66c2;
+    font-size: 1rem;
+    flex-shrink: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.card:hover .linkedin-icon {
+    opacity: 1;
+}
+
 .card.speaker {
     display: flex;
     flex-direction: column;
