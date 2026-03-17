@@ -1,69 +1,85 @@
 footer {
     background: black;
-    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
     width: 100%;
-    min-height: 30vh;
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 2rem;
 }
 
 footer img {
     flex: 0 0 auto;
-    height: 100px;
+    height: 80px;
 }
 
+.footer-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 0 8%;
+    padding-top: 3rem;
+    gap: 3rem;
+}
+
+/* ── Contact info ── */
+.info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.info {
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+    font-size: 0.9rem;
+}
+
+.info p:first-child {
+    color: rgba(255, 255, 255, 0.4);
+    flex-shrink: 0;
+}
+
+.info p:last-child {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* ── Nav ── */
 footer nav {
     padding: 0;
 }
 
 footer ul {
     display: flex;
-    height: 100%;
     flex-direction: column;
-    gap: 2rem;
+    gap: 0.6rem;
 }
 
 footer nav a {
-    text-align: left;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.55);
+    transition: color 0.2s;
 }
 
-.footer-div {
-    display: flex;
-    justify-content: space-around;
-    margin: 0 10%;
-    padding-top: 2rem ;
+footer nav a:hover {
+    color: white;
 }
 
-.info-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.address-container {
-    display: flex;
-    flex-direction: column;
-    gap: 5rem;
-}
-
+/* ── Bottom bar ── */
 .creative-commons {
-    background: (var(--red));
-    padding: 2rem 0 1rem 0;
+    padding: 1rem 0 1.25rem;
     text-align: center;
-    word-spacing: .5rem;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    word-spacing: 0.3rem;
 }
 
 /* TABLET AND BELOW (0–768) */
 @media (max-width: 768px) {
     .footer-div {
-        margin: 5%;
-        align-items: center;
-
-    }
-
-    .info-container {
-        padding-right: 1rem;
+        margin: 0 5%;
+        gap: 2rem;
     }
 
     .logo {
@@ -75,7 +91,7 @@ footer nav a {
 @media (max-width: 430px) {
     .footer-div {
         flex-direction: column;
-        gap: 2rem;
-        margin: 5%;
+        gap: 1.75rem;
+        padding-top: 2rem;
     }
 }
