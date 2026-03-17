@@ -31,14 +31,76 @@ nav {
     gap: 3rem;
 }
 
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    z-index: 201;
+    margin-right: 0.5rem;
+}
+
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: white;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger--open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger--open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger--open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
 /* TABLET AND BELOW (0–768) */
 @media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
     nav {
         display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.96);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        padding: 2rem;
+        z-index: 200;
+    }
+
+    nav.nav--open {
+        display: flex;
+    }
+
+    nav li a {
+        font-size: 2rem;
+        font-family: "Telegraf", system-ui, sans-serif;
+        font-weight: 600;
     }
 }
 
 /* MOBILE ONLY (0–430) */
 @media (max-width: 430px) {
-    nav {}
+    nav li a {
+        font-size: 1.75rem;
+    }
 }

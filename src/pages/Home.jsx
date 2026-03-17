@@ -10,19 +10,21 @@ import Footer        from "../sections/footer/Footer.jsx";
 import Team          from "../sections/team/Team.jsx";
 import Timeline      from "../sections/timeline/Timeline.jsx";
 import NavDots       from "../components/nav-dots/NavDots.jsx";
+import Sponsors      from "../sections/sponsors/Sponsors.jsx";
 import LoadingScreen from "../components/loading/LoadingScreen.jsx";
 
 export default function Home() {
   const { speakers, projects, organizers, loading } = useHomeData();
 
   const sections = [
-    { id: "hero-section",     label: "Home"     },
-    { id: "about-section",    label: "About"    },
-    ...(speakers.length   > 3 ? [{ id: "speakers-section", label: "Speakers" }] : []),
+    { id: "hero-section",      label: "Home"     },
+    { id: "about-section",     label: "About"    },
+    { id: "speakers-section",  label: "Speakers" },
     ...(projects.length   > 3 ? [{ id: "projects-section", label: "Projects" }] : []),
     ...(organizers.length > 3 ? [{ id: "team-section",     label: "Team"     }] : []),
-    { id: "timeline-section", label: "Timeline" },
-    { id: "faq-section",      label: "FAQ"      },
+    { id: "timeline-section",  label: "Timeline" },
+    { id: "sponsors-section",  label: "Sponsors" },
+    { id: "faq-section",       label: "FAQ"      },
   ];
 
   return (
@@ -32,11 +34,11 @@ export default function Home() {
       <NavDots sections={sections} />
       <Hero />
       <About />
-      {speakers.length   > 3 && <Speakers speakerData={speakers}     />}
+      <Speakers speakerData={speakers} />
       {projects.length   > 3 && <Projects projectData={projects}     />}
       {organizers.length > 3 && <Team     organizerData={organizers} />}
       <Timeline />
-      {/* <Sponsors /> */}
+      <Sponsors />
       <FAQ />
       <Footer />
     </>

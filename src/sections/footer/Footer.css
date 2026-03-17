@@ -72,4 +72,10 @@ footer nav a {
 }
 
 /* MOBILE ONLY (0–430) */
-@media (max-width: 430px) {}
+@media (max-width: 430px) {
+    .footer-div {
+        flex-direction: column;
+        gap: 2rem;
+        margin: 5%;
+    }
+}

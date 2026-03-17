@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Sponsors.css";
 
 export default function Sponsors() {
@@ -38,10 +39,9 @@ export default function Sponsors() {
       </div>
       <div className="sponsor-cta">
         <p className="sponsor-cta-text">Interested in becoming a sponsor?</p>
-        <p>Reach us at:</p>
-        <h4 className="contact-email" style={{ color: "var(--gold)" }}>
-          contact@deanzaexpo.org
-        </h4>
+        <Link to="/sponsor" className="btn-container sponsor-btn">
+          Get in touch <span className="btn-arrow">→</span>
+        </Link>
       </div>
     </section>
   );

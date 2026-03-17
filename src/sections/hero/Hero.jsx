@@ -7,19 +7,20 @@ export default function Hero() {
     <section id="hero-section">
       <img className="hero-background" src="expo.jpg" alt="" />
       <div className="overlay">
-        <motion.h2
-          className="tagline"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
-          Innovation expo for the students, by the students
-        </motion.h2>
-        <Button
-          label="Register Now"
-          width={150}
-          // href={"https://www.eventbrite.com/e/1978756589225?aff=oddtdtcreator"}
-        />
+        <div className="hero-content">
+          <motion.h2
+            className="tagline"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+          >
+            Innovation expo for the students, by the students
+          </motion.h2>
+          <Button
+            label="Register Now"
+            // href={"https://www.eventbrite.com/e/1978756589225?aff=oddtdtcreator"}
+          />
+        </div>
       </div>
     </section>
   );

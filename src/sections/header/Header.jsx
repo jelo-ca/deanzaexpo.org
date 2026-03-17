@@ -4,6 +4,7 @@ import { NAV_LINKS } from "../../constants/navigation";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -13,14 +14,23 @@ export default function Header() {
 
   return (
     <header className={scrolled ? "header--scrolled" : ""}>
-      <nav>
+      <nav className={menuOpen ? "nav--open" : ""}>
         {NAV_LINKS.map(({ href, label }) => (
           <li key={href}>
-            <a href={href}>{label}</a>
+            <a href={href} onClick={() => setMenuOpen(false)}>{label}</a>
           </li>
         ))}
       </nav>
       <img className="header-logo" src="/DAX_logo.png" alt="DAX logo" />
+      <button
+        className={`hamburger${menuOpen ? " hamburger--open" : ""}`}
+        aria-label="Toggle navigation"
+        onClick={() => setMenuOpen((o) => !o)}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </header>
   );
 }

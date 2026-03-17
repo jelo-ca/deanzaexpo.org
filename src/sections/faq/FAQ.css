@@ -61,3 +61,17 @@
     opacity: 0.9;
     line-height: 1.6;
 }
+
+/* TABLET AND BELOW (0–768) */
+@media (max-width: 768px) {
+    .faq-container {
+        width: 90%;
+    }
+}
+
+/* MOBILE ONLY (0–430) */
+@media (max-width: 430px) {
+    .faq-container {
+        width: 95%;
+    }
+}

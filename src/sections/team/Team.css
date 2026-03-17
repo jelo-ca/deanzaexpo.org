@@ -34,4 +34,13 @@
 }
 
 /* MOBILE ONLY (0–430) */
-@media (max-width: 430px) {}
+@media (max-width: 430px) {
+    .team-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .pillar {
+        width: 100%;
+    }
+}

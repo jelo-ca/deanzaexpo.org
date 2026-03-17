@@ -32,3 +32,23 @@
 .nav {
     z-index: 2;
 }
+
+/* TABLET AND BELOW (0–768) */
+@media (max-width: 768px) {
+    .carousel {
+        --spread: 12rem;
+        --depth: 20rem;
+        --tilt: 40deg;
+        height: 60vh;
+    }
+}
+
+/* MOBILE ONLY (0–430) */
+@media (max-width: 430px) {
+    .carousel {
+        --spread: 7rem;
+        --depth: 14rem;
+        --tilt: 35deg;
+        height: 65vh;
+    }
+}

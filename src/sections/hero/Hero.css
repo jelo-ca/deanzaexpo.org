@@ -30,25 +30,38 @@
     z-index: 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     background: linear-gradient(180deg,
             rgba(0, 0, 0, 0.65),
             rgba(0, 0, 0, 0.35));
 }
 
-.tagline {
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     width: 747px;
+}
+
+.hero-content .btn-container {
+    width: 50%;
+}
+
+.tagline {
     font-size: 5rem;
     text-align: left;
     font-weight: 600;
-    padding:  3rem 0;
+    padding: 0 0 1.5rem;
 }
 
 /* TABLET AND BELOW (0–768) */
 @media (max-width: 768px) {
+    .hero-content {
+        width: 430px;
+    }
+
     .tagline {
         font-size: 4rem;
-        width: 430px;
     }
 
     .overlay {
@@ -59,8 +72,11 @@
 
 /* MOBILE ONLY (0–430) */
 @media (max-width: 430px) {
+    .hero-content {
+        width: 100%;
+    }
+
     .tagline {
         font-size: 3rem;
-        width: 100%;
     }
 }

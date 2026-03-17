@@ -1,0 +1,126 @@
+.sponsor-form-page {
+  min-height: 100vh;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.sponsor-form-card {
+  width: 100%;
+  max-width: 640px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sponsor-back-link {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.2s;
+  align-self: flex-start;
+}
+
+.sponsor-back-link:hover {
+  color: white;
+}
+
+.sponsor-form-card h2 {
+  padding: 0;
+  font-size: 2.5rem;
+}
+
+.sponsor-form-subtitle {
+  opacity: 0.7;
+  line-height: 1.6;
+  margin-top: -0.5rem;
+}
+
+.sponsor-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.sf-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.sf-row .sf-field {
+  flex: 1;
+}
+
+.sf-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.sf-field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.sf-field input,
+.sf-field select,
+.sf-field textarea {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  color: white;
+  font-family: inherit;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.sf-field input:focus,
+.sf-field select:focus,
+.sf-field textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+.sf-field select option {
+  background: #111;
+  color: white;
+}
+
+.sf-field textarea {
+  resize: vertical;
+}
+
+.sf-submit {
+  align-self: flex-start;
+  margin-top: 0.5rem;
+}
+
+.sponsor-back-btn {
+  align-self: flex-start;
+  text-decoration: none;
+}
+
+/* MOBILE ONLY (0–430) */
+@media (max-width: 430px) {
+  .sponsor-form-card {
+    padding: 2rem 1.25rem;
+  }
+
+  .sf-row {
+    flex-direction: column;
+  }
+
+  .sponsor-form-card h2 {
+    font-size: 2rem;
+  }
+}
