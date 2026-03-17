@@ -2,14 +2,23 @@
   min-height: 100vh;
   background: black;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 2rem 1rem;
+  padding: 4rem 2rem;
 }
 
-.sponsor-form-card {
+/* ── Two-column layout ── */
+.sponsor-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
   width: 100%;
-  max-width: 640px;
+  max-width: 1200px;
+}
+
+/* ── Shared card base ── */
+.sponsor-form-card,
+.sponsor-tiers-panel {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
@@ -19,6 +28,16 @@
   gap: 1.5rem;
 }
 
+.sponsor-form-card {
+  flex: 0 0 480px;
+}
+
+.sponsor-tiers-panel {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Form header ── */
 .sponsor-back-link {
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.5);
@@ -30,17 +49,21 @@
   color: white;
 }
 
-.sponsor-form-card h2 {
+.sponsor-form-card h2,
+.sponsor-tiers-panel h2 {
   padding: 0;
   font-size: 2.5rem;
 }
 
-.sponsor-form-subtitle {
-  opacity: 0.7;
+.sponsor-form-subtitle,
+.sponsor-tiers-subtitle {
+  opacity: 0.6;
   line-height: 1.6;
   margin-top: -0.5rem;
+  font-size: 0.95rem;
 }
 
+/* ── Form fields ── */
 .sponsor-form {
   display: flex;
   flex-direction: column;
@@ -121,9 +144,188 @@
   text-decoration: none;
 }
 
-/* MOBILE ONLY (0–430) */
-@media (max-width: 430px) {
+/* ── Tiers panel ── */
+.sponsor-tiers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sponsor-tier-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 3px solid var(--tier-accent);
+  border-radius: 10px;
+  padding: 1.1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: background 0.2s;
+}
+
+.sponsor-tier-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.stc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  color: white;
+  font-family: inherit;
+}
+
+.stc-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.stc-name {
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--tier-accent);
+}
+
+.stc-price {
+  font-size: 0.95rem;
+  font-weight: 600;
+  opacity: 0.85;
+  white-space: nowrap;
+}
+
+.stc-chevron {
+  font-size: 0.6rem;
+  opacity: 0.4;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.sponsor-tier-card.is-open .stc-chevron {
+  transform: rotate(-180deg);
+}
+
+/* ── Animated perks wrapper ── */
+.stc-perks-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+  overflow: hidden;
+}
+
+.sponsor-tier-card.is-open .stc-perks-wrap {
+  grid-template-rows: 1fr;
+}
+
+.stc-perks-wrap .stc-perks {
+  min-height: 0;
+  margin-top: 0;
+  overflow: hidden;
+  padding-top: 0;
+  transition: padding-top 0.3s ease;
+}
+
+.sponsor-tier-card.is-open .stc-perks-wrap .stc-perks {
+  padding-top: 0.75rem;
+}
+
+.stc-perks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.stc-perks li {
+  font-size: 0.88rem;
+  opacity: 0.75;
+  line-height: 1.5;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.stc-perks li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  opacity: 0.5;
+}
+
+/* ── All sponsors ── */
+.sponsor-all-perks {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 1.1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.spa-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin: 0;
+}
+
+.sponsor-all-perks ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.sponsor-all-perks li {
+  font-size: 0.88rem;
+  opacity: 0.7;
+  line-height: 1.5;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.sponsor-all-perks li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  opacity: 0.5;
+}
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  .sponsor-layout {
+    flex-direction: column;
+  }
+
   .sponsor-form-card {
+    flex: none;
+    width: 100%;
+  }
+}
+
+@media (max-width: 430px) {
+  .sponsor-form-page {
+    padding: 2rem 1rem;
+  }
+
+  .sponsor-form-card,
+  .sponsor-tiers-panel {
     padding: 2rem 1.25rem;
   }
 
@@ -131,7 +333,8 @@
     flex-direction: column;
   }
 
-  .sponsor-form-card h2 {
+  .sponsor-form-card h2,
+  .sponsor-tiers-panel h2 {
     font-size: 2rem;
   }
 }
