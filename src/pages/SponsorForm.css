@@ -105,6 +105,17 @@
   margin-top: 0.5rem;
 }
 
+.sf-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.sf-error {
+  font-size: 0.9rem;
+  color: #ff6b6b;
+  margin: 0;
+}
+
 .sponsor-back-btn {
   align-self: flex-start;
   text-decoration: none;

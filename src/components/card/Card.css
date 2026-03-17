@@ -2,6 +2,32 @@
     cursor: pointer;
 }
 
+.card.team-member {
+    border-radius: 0.5rem;
+    transition: background 0.15s;
+    margin: 0 0 0.125rem 0;
+}
+
+.card.team-member:hover {
+    background: rgba(255, 195, 11, 0.06);
+}
+
+.card.team-member .card-text {
+    padding: 0.6rem 0.6rem;
+    margin: 0;
+}
+
+.card.team-member h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.card.team-member .text {
+    font-size: 0.95rem;
+    margin-top: 0.15rem;
+}
+
 .team-name {
     display: flex;
     align-items: center;
@@ -10,7 +36,7 @@
 
 .linkedin-icon {
     color: #0a66c2;
-    font-size: 1rem;
+    font-size: 0.85rem;
     flex-shrink: 0;
     opacity: 0;
     transition: opacity 0.3s;

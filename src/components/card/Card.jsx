@@ -49,7 +49,6 @@ export default function Card({ data, type }) {
   if (type === "team")
     return (
       <motion.div
-        style={{ margin: "0 0 1rem 0" }}
         viewport={{ once: true, amount: 0.75 }}
         className="card team-member"
         initial={{ opacity: 0, y: 50, originX: 0 }}

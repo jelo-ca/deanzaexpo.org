@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./SponsorForm.css";
+import { sendEmail, TEMPLATE_IDS } from "../lib/email";
 
 const TIERS = ["Gold", "Silver", "Bronze", "Other / Not sure"];
 
@@ -13,28 +14,44 @@ export default function SponsorForm() {
     tier: "",
     message: "",
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
+  const [status, setStatus] = useState("idle"); // idle | loading | success | error
 
   function handleChange(e) {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    const subject = encodeURIComponent(`Sponsorship Inquiry – ${form.org}`);
-    const body = encodeURIComponent(
-      `Organization: ${form.org}\nContact: ${form.contact}\nEmail: ${form.email}\nPhone: ${form.phone}\nTier interest: ${form.tier}\n\n${form.message}`
-    );
-    window.location.href = `mailto:contact@deanzaexpo.org?subject=${subject}&body=${body}`;
-    setSubmitted(true);
+
+    // Honeypot check — bots fill hidden fields, humans don't
+    if (honeypot) {
+      setStatus("success");
+      return;
+    }
+
+    setStatus("loading");
+    try {
+      await sendEmail(TEMPLATE_IDS.sponsor, {
+        sponsor_org: form.org,
+        from_name: form.contact,
+        reply_to: form.email,
+        sponsor_phone: form.phone || "—",
+        sponsor_tier: form.tier || "Not specified",
+        message: form.message || "—",
+      });
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
   }
 
-  if (submitted) {
+  if (status === "success") {
     return (
       <div className="sponsor-form-page">
         <div className="sponsor-form-card">
           <h2>Thanks for reaching out!</h2>
-          <p>Your email client should have opened with your inquiry. If not, email us directly at <span>contact@deanzaexpo.org</span>.</p>
+          <p>We received your inquiry and will be in touch soon at <span>{form.email}</span>.</p>
           <Link to="/" className="btn-container sponsor-back-btn">← Back to home</Link>
         </div>
       </div>
@@ -51,6 +68,18 @@ export default function SponsorForm() {
         </p>
 
         <form onSubmit={handleSubmit} className="sponsor-form">
+          {/* Honeypot — hidden from real users, bots fill it */}
+          <input
+            type="text"
+            name="website"
+            value={honeypot}
+            onChange={(e) => setHoneypot(e.target.value)}
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            style={{ position: "absolute", left: "-9999px" }}
+          />
+
           <div className="sf-field">
             <label htmlFor="org">Organization / Company *</label>
             <input id="org" name="org" value={form.org} onChange={handleChange} required />
@@ -85,8 +114,12 @@ export default function SponsorForm() {
             <textarea id="message" name="message" rows={4} value={form.message} onChange={handleChange} />
           </div>
 
-          <button type="submit" className="btn-container sf-submit">
-            Send Inquiry <span className="btn-arrow">→</span>
+          {status === "error" && (
+            <p className="sf-error">Something went wrong. Please try again or email us at contact@deanzaexpo.org.</p>
+          )}
+
+          <button type="submit" className="btn-container sf-submit" disabled={status === "loading"}>
+            {status === "loading" ? "Sending…" : <>Send Inquiry <span className="btn-arrow">→</span></>}
           </button>
         </form>
       </div>
