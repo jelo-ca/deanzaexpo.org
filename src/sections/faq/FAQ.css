@@ -37,6 +37,11 @@
     gap: 12px;
     font-size: 1rem;
     font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.faq-question:hover {
+    background: rgba(255, 255, 255, 0.04);
 }
 
 .faq-chevron {
@@ -53,7 +58,7 @@
 }
 
 .faq-item--open .faq-answer-wrapper {
-    max-height: 200px;
+    max-height: 500px;
 }
 
 .faq-answer {
