@@ -51,6 +51,7 @@
     .about-text-container {
         padding: 1rem;
         gap: 1rem;
+        font-size: 1rem;
     }
 
     .about-logo {
