@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate, Link } from "react-router-dom";
 import "./SponsorForm.css";
-import { sendEmail, TEMPLATE_IDS } from "../lib/email";
+import { sendEmail, submitToSheets, TEMPLATE_IDS } from "../lib/email";
 
 export default function Speak() {
   const navigate = useNavigate();
@@ -31,13 +31,23 @@ export default function Speak() {
 
     setStatus("loading");
     try {
-      await sendEmail(TEMPLATE_IDS.speaker, {
-        from_name: form.name,
-        reply_to: form.email,
-        speaker_org: form.org || "—",
-        speaker_topic: form.topic,
-        message: form.message || "—",
-      });
+      await Promise.all([
+        sendEmail(TEMPLATE_IDS.speaker, {
+          from_name: form.name,
+          reply_to: form.email,
+          speaker_org: form.org || "—",
+          speaker_topic: form.topic,
+          message: form.message || "—",
+        }),
+        submitToSheets("Speakers", {
+          timestamp: new Date().toISOString(),
+          name: form.name,
+          email: form.email,
+          org: form.org || "",
+          topic: form.topic,
+          message: form.message || "",
+        }),
+      ]);
       setStatus("success");
     } catch {
       setStatus("error");
