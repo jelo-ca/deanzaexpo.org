@@ -19,10 +19,10 @@ export default function Home() {
   const sections = [
     { id: "hero-section",      label: "Home"     },
     { id: "about-section",     label: "About"    },
+    { id: "timeline-section",  label: "Timeline" },
     { id: "speakers-section",  label: "Speakers" },
     ...(projects.length   > 3 ? [{ id: "projects-section", label: "Projects" }] : []),
     ...(organizers.length > 3 ? [{ id: "team-section",     label: "Team"     }] : []),
-    { id: "timeline-section",  label: "Timeline" },
     { id: "sponsors-section",  label: "Sponsors" },
     { id: "faq-section",       label: "FAQ"      },
   ];
@@ -34,10 +34,10 @@ export default function Home() {
       <NavDots sections={sections} />
       <Hero />
       <About />
+      <Timeline />
       <Speakers speakerData={speakers} />
       {projects.length   > 3 && <Projects projectData={projects}     />}
       {organizers.length > 3 && <Team     organizerData={organizers} />}
-      <Timeline />
       <Sponsors />
       <FAQ />
       <Footer />
