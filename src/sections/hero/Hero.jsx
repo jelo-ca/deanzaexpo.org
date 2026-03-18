@@ -18,7 +18,7 @@ export default function Hero() {
           </motion.h2>
           <Button
             label="Register Now"
-            // href={"https://www.eventbrite.com/e/1978756589225?aff=oddtdtcreator"}
+            href={"https://www.eventbrite.com/e/de-anza-expo-2026-tickets-1978756589225"}
           />
         </div>
       </div>

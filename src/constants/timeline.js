@@ -18,18 +18,18 @@ export const TIMELINE_MILESTONES = [
     date: "March 2026",
     title: "Sponsorships Secured",
     description:
-      "Partnerships formed with local tech companies and organizations to fund and support the inaugural expo.",
+      "Partnerships are being formed with local tech companies and organizations to fund and support the inaugural expo.",
   },
   {
     date: "April 2026",
     title: "Project Submissions Open",
     description:
-      "Students across all disciplines submitted projects ranging from hardware prototypes to software applications.",
+      "Students across all disciplines will submit projects ranging from hardware prototypes to software applications.",
   },
   {
     date: "May 2026",
     title: "DAX Expo Day",
     description:
-      "The first DAX Expo goes live — showcasing 40+ student projects to hundreds of attendees and industry professionals.",
+      "The first DAX Expo goes live — expected to showcase student projects to hundreds of attendees and industry professionals.",
   },
 ];
