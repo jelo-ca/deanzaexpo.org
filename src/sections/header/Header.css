@@ -8,14 +8,28 @@ header {
     align-items: center;
     padding: 1rem 1rem;
     background: transparent;
-    transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
+    transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: -1;
 }
 
 header.header--scrolled {
     background: rgba(0, 0, 0, 0.82);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+header.header--scrolled::before {
+    opacity: 1;
 }
 
 .header-logo {
@@ -124,5 +138,9 @@ nav li a:hover::after {
 @media (max-width: 430px) {
     nav li a {
         font-size: 1.75rem;
+    }
+
+    .header-logo {
+        width: 80px;
     }
 }

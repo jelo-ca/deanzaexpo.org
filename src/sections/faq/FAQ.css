@@ -1,9 +1,8 @@
 #faq-section {
     display: flex;
-    min-height: 100vh;
     flex-direction: column;
     align-items: center;
-    padding-top: 72px;
+    padding: 72px 0 80px;
 }
 
 #faq-section h2 {

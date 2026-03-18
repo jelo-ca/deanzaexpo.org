@@ -73,6 +73,17 @@
     background: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 
+/* MOBILE ONLY (0–430) */
+@media (max-width: 430px) {
+    .ticker__fade {
+        width: 32px;
+    }
+
+    .ticker__track {
+        gap: 1rem;
+    }
+}
+
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
     .ticker__track {

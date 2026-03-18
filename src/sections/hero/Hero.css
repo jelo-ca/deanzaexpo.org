@@ -1,4 +1,5 @@
 #hero-section {
+    position: relative;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -23,10 +24,7 @@
 .overlay {
     position: absolute;
     padding: 7rem 4rem 4rem;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
+    inset: 0;
     z-index: 0;
     display: flex;
     flex-direction: column;
@@ -34,13 +32,15 @@
     background: linear-gradient(180deg,
             rgba(0, 0, 0, 0.65),
             rgba(0, 0, 0, 0.35));
+    overflow: hidden;
 }
 
 .hero-content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 747px;
+    width: 100%;
+    max-width: 747px;
 }
 
 .tagline {
@@ -54,14 +54,18 @@
 /* TABLET AND BELOW (0–768) */
 @media (max-width: 768px) {
     .hero-content {
-        width: min(430px, 100%);
+        width: 100%;
+        max-width: 100%;
+        align-items: center;
     }
 
     .tagline {
-        font-size: 4rem;
+        font-size: 3.5rem;
+        text-align: center;
     }
 
     .overlay {
+        padding: 5rem 2rem 3rem;
         text-align: center;
         align-items: center;
     }
@@ -69,11 +73,11 @@
 
 /* MOBILE ONLY (0–430) */
 @media (max-width: 430px) {
-    .hero-content {
-        width: 100%;
+    .tagline {
+        font-size: 2.5rem;
     }
 
-    .tagline {
-        font-size: 3rem;
+    .overlay {
+        padding: 4rem 1.25rem 2.5rem;
     }
 }
