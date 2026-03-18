@@ -1,5 +1,9 @@
 import "./Button.css";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { isSafeHref } from "../../lib/sanitize";
+
+const MotionLink = motion.create(Link);
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -16,10 +20,20 @@ export default function Button({ label, href }) {
   );
 
   if (href) {
+    // Block javascript:, data:, and other dangerous schemes
+    const safeHref = isSafeHref(href) ? href : "#";
+    const isExternal = safeHref.startsWith("http://") || safeHref.startsWith("https://") || safeHref.startsWith("//");
+    if (isExternal) {
+      return (
+        <motion.a href={safeHref} className="btn-container" target="_blank" rel="noopener noreferrer" {...fadeUp}>
+          {content}
+        </motion.a>
+      );
+    }
     return (
-      <motion.a href={href} className="btn-container" target="_blank" {...fadeUp}>
+      <MotionLink to={safeHref} className="btn-container" {...fadeUp}>
         {content}
-      </motion.a>
+      </MotionLink>
     );
   } else {
     return (

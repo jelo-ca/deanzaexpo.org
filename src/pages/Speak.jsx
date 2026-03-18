@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { useNavigate, Link } from "react-router-dom";
 import "./SponsorForm.css";
 import { sendEmail, submitToSheets, TEMPLATE_IDS } from "../lib/email";
+import { sanitizeText, sanitizeEmail } from "../lib/sanitize";
 
 export default function Speak() {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ export default function Speak() {
   });
   const [honeypot, setHoneypot] = useState("");
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
+  const lastSubmitRef = useRef(0);
 
   function handleChange(e) {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
@@ -29,23 +31,40 @@ export default function Speak() {
       return;
     }
 
+    // Client-side rate limit: one submission per 30 seconds
+    const now = Date.now();
+    if (now - lastSubmitRef.current < 30_000) {
+      setStatus("error");
+      return;
+    }
+    lastSubmitRef.current = now;
+
+    // Sanitize all user inputs before sending to external services
+    const safe = {
+      name:    sanitizeText(form.name, 100),
+      email:   sanitizeEmail(form.email),
+      org:     sanitizeText(form.org, 120),
+      topic:   sanitizeText(form.topic, 200),
+      message: sanitizeText(form.message, 1000),
+    };
+
     setStatus("loading");
     try {
       await Promise.all([
         sendEmail(TEMPLATE_IDS.speaker, {
-          from_name: form.name,
-          reply_to: form.email,
-          speaker_org: form.org || "—",
-          speaker_topic: form.topic,
-          message: form.message || "—",
+          from_name:    safe.name,
+          reply_to:     safe.email,
+          speaker_org:  safe.org || "—",
+          speaker_topic: safe.topic,
+          message:      safe.message || "—",
         }),
         submitToSheets("Speakers", {
           timestamp: new Date().toISOString(),
-          name: form.name,
-          email: form.email,
-          org: form.org || "",
-          topic: form.topic,
-          message: form.message || "",
+          name:    safe.name,
+          email:   safe.email,
+          org:     safe.org,
+          topic:   safe.topic,
+          message: safe.message,
         }),
       ]);
       setStatus("success");
@@ -124,27 +143,27 @@ export default function Speak() {
           <div className="sf-row">
             <div className="sf-field">
               <label htmlFor="name">Name *</label>
-              <input id="name" name="name" value={form.name} onChange={handleChange} required />
+              <input id="name" name="name" value={form.name} onChange={handleChange} required maxLength={100} />
             </div>
             <div className="sf-field">
               <label htmlFor="email">Email *</label>
-              <input id="email" name="email" type="email" value={form.email} onChange={handleChange} required />
+              <input id="email" name="email" type="email" value={form.email} onChange={handleChange} required maxLength={254} />
             </div>
           </div>
 
           <div className="sf-field">
             <label htmlFor="org">Organization / Title</label>
-            <input id="org" name="org" value={form.org} onChange={handleChange} placeholder="e.g. Senior Engineer at Acme Corp" />
+            <input id="org" name="org" value={form.org} onChange={handleChange} placeholder="e.g. Senior Engineer at Acme Corp" maxLength={120} />
           </div>
 
           <div className="sf-field">
             <label htmlFor="topic">Talk Topic *</label>
-            <input id="topic" name="topic" value={form.topic} onChange={handleChange} required placeholder="What would you like to speak about?" />
+            <input id="topic" name="topic" value={form.topic} onChange={handleChange} required placeholder="What would you like to speak about?" maxLength={200} />
           </div>
 
           <div className="sf-field">
             <label htmlFor="message">Anything else you'd like to share</label>
-            <textarea id="message" name="message" rows={4} value={form.message} onChange={handleChange} />
+            <textarea id="message" name="message" rows={4} value={form.message} onChange={handleChange} maxLength={1000} />
           </div>
 
           {status === "error" && (

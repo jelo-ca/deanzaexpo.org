@@ -1,7 +1,29 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "motion/react";
 import "./SponsorForm.css";
 import { sendEmail, TEMPLATE_IDS } from "../lib/email";
+import { sanitizeText, sanitizeEmail } from "../lib/sanitize";
+
+const fadeSlideLeft = {
+  hidden: { opacity: 0, x: -40 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
+
+const fadeSlideRight = {
+  hidden: { opacity: 0, x: 40 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut", delay: 0.1 } },
+};
+
+const staggerList = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.25 } },
+};
+
+const tierItem = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: "easeOut" } },
+};
 
 const TIERS = ["Platinum", "Gold", "Silver", "Bronze", "Other / Not sure"];
 
@@ -86,6 +108,7 @@ export default function SponsorForm() {
   });
   const [honeypot, setHoneypot] = useState("");
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
+  const lastSubmitRef = useRef(0);
 
   function handleChange(e) {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
@@ -100,15 +123,33 @@ export default function SponsorForm() {
       return;
     }
 
+    // Client-side rate limit: one submission per 30 seconds
+    const now = Date.now();
+    if (now - lastSubmitRef.current < 30_000) {
+      setStatus("error");
+      return;
+    }
+    lastSubmitRef.current = now;
+
+    // Sanitize all user inputs before sending to external service
+    const safe = {
+      org:     sanitizeText(form.org, 120),
+      contact: sanitizeText(form.contact, 100),
+      email:   sanitizeEmail(form.email),
+      phone:   sanitizeText(form.phone, 30),
+      tier:    TIERS.includes(form.tier) ? form.tier : "Not specified",
+      message: sanitizeText(form.message, 1000),
+    };
+
     setStatus("loading");
     try {
       await sendEmail(TEMPLATE_IDS.sponsor, {
-        sponsor_org: form.org,
-        from_name: form.contact,
-        reply_to: form.email,
-        sponsor_phone: form.phone || "—",
-        sponsor_tier: form.tier || "Not specified",
-        message: form.message || "—",
+        sponsor_org: safe.org,
+        from_name:   safe.contact,
+        reply_to:    safe.email,
+        sponsor_phone: safe.phone || "—",
+        sponsor_tier:  safe.tier,
+        message:       safe.message || "—",
       });
       setStatus("success");
     } catch {
@@ -119,11 +160,16 @@ export default function SponsorForm() {
   if (status === "success") {
     return (
       <div className="sponsor-form-page">
-        <div className="sponsor-form-card">
+        <motion.div
+          className="sponsor-form-card"
+          variants={fadeSlideLeft}
+          initial="hidden"
+          animate="visible"
+        >
           <h2>Thanks for reaching out!</h2>
           <p>We received your inquiry and will be in touch soon at <span>{form.email}</span>.</p>
           <Link to="/" className="btn-container sponsor-back-btn">← Back to home</Link>
-        </div>
+        </motion.div>
       </div>
     );
   }
@@ -133,7 +179,12 @@ export default function SponsorForm() {
       <div className="sponsor-layout">
 
         {/* ── Form ── */}
-        <div className="sponsor-form-card">
+        <motion.div
+          className="sponsor-form-card"
+          variants={fadeSlideLeft}
+          initial="hidden"
+          animate="visible"
+        >
           <Link to="/" className="sponsor-back-link">← Back</Link>
           <h2>Become a Sponsor</h2>
           <p className="sponsor-form-subtitle">
@@ -155,22 +206,22 @@ export default function SponsorForm() {
 
             <div className="sf-field">
               <label htmlFor="org">Organization / Company *</label>
-              <input id="org" name="org" value={form.org} onChange={handleChange} required />
+              <input id="org" name="org" value={form.org} onChange={handleChange} required maxLength={120} />
             </div>
 
             <div className="sf-field">
               <label htmlFor="contact">Contact Name *</label>
-              <input id="contact" name="contact" value={form.contact} onChange={handleChange} required />
+              <input id="contact" name="contact" value={form.contact} onChange={handleChange} required maxLength={100} />
             </div>
 
             <div className="sf-row">
               <div className="sf-field">
                 <label htmlFor="email">Email *</label>
-                <input id="email" name="email" type="email" value={form.email} onChange={handleChange} required />
+                <input id="email" name="email" type="email" value={form.email} onChange={handleChange} required maxLength={254} />
               </div>
               <div className="sf-field">
                 <label htmlFor="phone">Phone</label>
-                <input id="phone" name="phone" type="tel" value={form.phone} onChange={handleChange} />
+                <input id="phone" name="phone" type="tel" value={form.phone} onChange={handleChange} maxLength={30} />
               </div>
             </div>
 
@@ -184,7 +235,7 @@ export default function SponsorForm() {
 
             <div className="sf-field">
               <label htmlFor="message">Message</label>
-              <textarea id="message" name="message" rows={4} value={form.message} onChange={handleChange} />
+              <textarea id="message" name="message" rows={4} value={form.message} onChange={handleChange} maxLength={1000} />
             </div>
 
             {status === "error" && (
@@ -195,31 +246,39 @@ export default function SponsorForm() {
               {status === "loading" ? "Sending…" : <>Send Inquiry <span className="btn-arrow">→</span></>}
             </button>
           </form>
-        </div>
+        </motion.div>
 
         {/* ── Tiers Panel ── */}
-        <div className="sponsor-tiers-panel">
+        <motion.div
+          className="sponsor-tiers-panel"
+          variants={fadeSlideRight}
+          initial="hidden"
+          animate="visible"
+        >
           <h2>Sponsorship Tiers</h2>
           <p className="sponsor-tiers-subtitle">
             Every tier includes logo placement on our website, banner, and on-site signage.
           </p>
 
-          <div className="sponsor-tiers-list">
+          <motion.div
+            className="sponsor-tiers-list"
+            variants={staggerList}
+            initial="hidden"
+            animate="visible"
+          >
             {SPONSOR_TIERS.map((tier) => {
               const isOpen = openTiers.has(tier.name);
               return (
-                <div key={tier.name} className={`sponsor-tier-card${isOpen ? " is-open" : ""}`} style={{ "--tier-accent": tier.accent }}>
-                  <button
+                <motion.div key={tier.name} variants={tierItem} className={`sponsor-tier-card${isOpen ? " is-open" : ""}`} style={{ "--tier-accent": tier.accent }} onClick={() => toggleTier(tier.name)} role="button" aria-expanded={isOpen} tabIndex={0} onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && toggleTier(tier.name)}>
+                  <div
                     className="stc-header"
-                    onClick={() => toggleTier(tier.name)}
-                    aria-expanded={isOpen}
                   >
                     <span className="stc-name">{tier.name}</span>
                     <span className="stc-header-right">
                       <span className="stc-price">{tier.price}</span>
                       <span className="stc-chevron">▼</span>
                     </span>
-                  </button>
+                  </div>
                   <div className="stc-perks-wrap">
                     <ul className="stc-perks">
                       {tier.perks.map((perk) => (
@@ -227,10 +286,10 @@ export default function SponsorForm() {
                       ))}
                     </ul>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
 
           <div className="sponsor-all-perks">
             <p className="spa-label">All sponsors receive</p>
@@ -240,7 +299,7 @@ export default function SponsorForm() {
               ))}
             </ul>
           </div>
-        </div>
+        </motion.div>
 
       </div>
     </div>
