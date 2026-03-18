@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { login } from "../lib/auth";
 
 // Admin login page
@@ -6,6 +7,7 @@ import { login } from "../lib/auth";
 // Uses supabase authentication
 
 export default function AdminLogin() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -18,7 +20,7 @@ export default function AdminLogin() {
 
     try {
       await login(email, password);
-      window.location.href = "/admin";
+      navigate("/admin", { replace: true });
     } catch (e2) {
       setError(e2.message || "Login failed");
     } finally {
