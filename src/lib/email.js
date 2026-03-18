@@ -5,7 +5,7 @@ const PUBLIC_KEY = () => window.__ENV__?.EMAILJS_PUBLIC_KEY;
 const SHEETS_WEBHOOK_URL = () => window.__ENV__?.SHEETS_WEBHOOK_URL;
 
 export const TEMPLATE_IDS = {
-  sponsor: "template_14ah1gl",
+  sponsor: "template_pz98neb",
   speaker: "template_fpl2ktc",
 };
 
