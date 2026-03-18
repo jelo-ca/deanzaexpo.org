@@ -21,9 +21,9 @@ export default function LoadingScreen({ visible }) {
         <motion.div
           className="loading-screen"
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { duration: 0.6, ease: "easeInOut" } }}
+          exit={{ opacity: 0, transition: { duration: 0.5, delay: 0.3, ease: "easeInOut" } }}
         >
-          <Logo immediate width={360} height={288} />
+          <Logo wipe width={360} height={288} />
         </motion.div>
       )}
     </AnimatePresence>
