@@ -11,11 +11,11 @@ export default function About() {
       <div className="about-text-container">
         <h2>Who we are</h2>
         <p>
-          At DAX, we’re passionate about showcasing the creativity and
-          innovation of De Anza students. Whether you’re a tech enthusiast, a
-          budding engineer, or just curious about the latest student projects,
-          you’ll find exciting demos, hands-on workshops, and opportunities to
-          connect with peers and professionals.
+          DAX bridges the gap between community college academics & the tech
+          industry by transforming our campus into a professional hub for
+          innovation. We provide a platform for students to showcase their
+          technical craft & for industry leaders to engage with the next
+          generation of creators.
         </p>
       </div>
     </section>

@@ -71,13 +71,13 @@ export default function Sponsors() {
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
           />
         </motion.div>
-        {/* <h3>Silver Sponsors</h3>
+        {/* <h3 style={{ color: "#b0b0b8" }}>Silver Sponsors</h3>
         <div className="logo-container">
           <img src="" alt="" className="sponsor-logo" />
           <img src="" alt="" className="sponsor-logo" />
           <img src="" alt="" className="sponsor-logo" />
         </div>
-        <h3>Bronze Sponsors</h3>
+        <h3 style={{ color: "#c47f3a" }}>Bronze Sponsors</h3>
         <div className="logo-container">
           <img src="" alt="" className="sponsor-logo" />
           <img src="" alt="" className="sponsor-logo" />

@@ -9,6 +9,10 @@
     padding: 0 1rem;
 }
 
+.gold-sponsor-container h3 {
+    color: var(--gold);
+}
+
 .logo-container {
     display: flex;
     flex-direction: row;

@@ -68,71 +68,50 @@ export default function Logo({ className, width = 220, height = 176, immediate =
   }
 
   return (
-    // Draws Path
+    // Draws Path — whileInView on the SVG itself so iOS IntersectionObserver
+    // observes an HTML-level element instead of inner SVG elements.
     <motion.svg
       className={className}
       width={width}
       height={height}
       viewBox="0 0 1733.3333 1386.6667"
       xmlns="http://www.w3.org/2000/svg"
-      initial="hidden"
-      animate="show"
       role="img"
       aria-label="DAX logo"
+      initial="hidden"
+      {...(immediate
+        ? { animate: "show" }
+        : { whileInView: "show", viewport: { once: true, amount: 0.2 } })}
     >
-      <motion.g
-        {...(!immediate && { viewport: { once: true, amount: 0.75 } })}
-        variants={pathVariant}
-        initial="hidden"
-        {...(immediate ? { animate: "show" } : { whileInView: "show" })}
-      >
+      <motion.g variants={pathVariant}>
         <motion.path
           d={PATH_D}
           transform={TRANSFORM}
-          fill="currentColor"
-          {...(!immediate && { viewport: { once: true, amount: 0.75 } })}
           variants={pathVariant}
-          initial="hidden"
-          {...(immediate ? { animate: "show" } : { whileInView: "show" })}
           style={{ stroke: "currentColor", strokeWidth: 30, fill: "transparent" }}
         />
         <motion.path
           d={PATH_AX}
           transform={TRANSFORM}
-          fill="currentColor"
-          {...(!immediate && { viewport: { once: true, amount: 0.75 } })}
           variants={pathVariant}
-          initial="hidden"
-          {...(immediate ? { animate: "show" } : { whileInView: "show" })}
           style={{ stroke: "currentColor", strokeWidth: 30, fill: "transparent" }}
         />
       </motion.g>
 
       {/* Fill in the SVG after path is drawn */}
-      <motion.g
-        {...(!immediate && { viewport: { once: true, amount: 0.75 } })}
-        variants={fillVariant}
-        initial="hidden"
-        {...(immediate ? { animate: "show" } : { whileInView: "show" })}
-      >
+      <motion.g variants={fillVariant}>
         <motion.path
           d={PATH_D}
           transform={TRANSFORM}
           fill="currentColor"
-          {...(!immediate && { viewport: { once: true, amount: 0.75 } })}
           variants={fillVariant}
-          initial="hidden"
-          {...(immediate ? { animate: "show" } : { whileInView: "show" })}
           style={{ stroke: "currentColor", strokeWidth: 30 }}
         />
         <motion.path
           d={PATH_AX}
           transform={TRANSFORM}
           fill="currentColor"
-          {...(!immediate && { viewport: { once: true, amount: 0.75 } })}
           variants={fillVariant}
-          initial="hidden"
-          {...(immediate ? { animate: "show" } : { whileInView: "show" })}
           style={{ stroke: "currentColor", strokeWidth: 18 }}
         />
       </motion.g>

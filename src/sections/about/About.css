@@ -10,6 +10,7 @@
 .about-logo {
     width: 50%;
     height: auto;
+    aspect-ratio: 1733 / 1387;
     object-fit: cover;
     border: 1px solid black;
     margin: auto;
